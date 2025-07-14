@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nathan Ochem - Accueil</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-100 text-gray-900 font-sans min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="img/Logonathanochem.png" alt="Logo Nathan Ochem" class="h-8 w-8" />
+        <span class="text-xl font-bold text-black-800">Nathan Ochem</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
+        <a href="experiences.html" class="hover:text-purple-600">Expériences</a>
+        <a href="education.html" class="hover:text-purple-600">Éducation</a>
+        <a href="projects.html" class="hover:text-purple-600">Projets</a>
+        <a href="hobbies.html" class="hover:text-purple-600">Galerie</a>
+        <a href="index-en.html" class="text-sm text-blue-600 hover:underline">🇬🇧</a>
+      </nav>
+      <button id="burgerBtn" class="md:hidden focus:outline-none" aria-label="Menu">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 bg-white border-t text-sm font-medium text-gray-700">
+      <a href="index.html" class="block py-2 hover:text-purple-600">Accueil</a>
+      <a href="experiences.html" class="block py-2 hover:text-purple-600">Expériences</a>
+      <a href="education.html" class="block py-2 hover:text-purple-600">Éducation</a>
+      <a href="projects.html" class="hover:text-purple-600">Projets</a>
+      <a href="hobbies.html" class="block py-2 hover:text-purple-600">Hobbies</a>
+      <a href="index-en.html" class="text-sm text-blue-600 hover:underline">🇬🇧</a>
+    </div>
+  </header>
+
+<main class="max-w-6xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-12">
+  <div class="md:w-1/2 text-center md:text-left">
+    <h1 class="text-5xl font-extrabold text-purple-800 mb-6 leading-tight">Nathan Ochem</h1>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      Je suis actuellement étudiant en quatrième année d'ingénierie mécanique à l'École Universitaire Polytechnique de Lille. Ma formation me permet d'approfondir les concepts et techniques clés de ce domaine.
+      <br /><br />
+      Curieux, rigoureux et créatif, je cherche à contribuer à des projets ambitieux où performance, ingéniosité et travail d’équipe sont les moteurs de l’excellence.
+    </p>
+  </div>
+
+  <div class="md:w-1/2 flex justify-center">
+    <img src="img/portrait.png" alt="Portrait professionnel de Nathan Ochem" class="rounded-full shadow-xl max-w-xs w-full object-cover" />
+  </div>
+</main>
+
+<section class="max-w-6xl mx-auto px-6 py-12">
+  <h2 class="text-3xl font-bold text-purple-800 mb-4">Objectif professionnel</h2>
+  <p class="text-gray-700 text-lg leading-relaxed">
+    Actuellement à la recherche d’une alternance pour ma dernière année de formation en ingénierie mécanique, je souhaite m’impliquer dans un projet concret orienté conception, simulation ou industrialisation.
+  </p>
+</section>
+
+
+<section class="max-w-6xl mx-auto px-6 py-12 bg-gray-50 rounded-lg">
+  <h2 class="text-3xl font-bold text-purple-800 mb-4">Passion automobile et moto</h2>
+  <div class="md:flex md:items-start gap-6">
+    <div class="md:w-2/3">
+      <p class="text-gray-700 text-lg leading-relaxed">
+        Ma passion pour les sports mécaniques est le moteur de mon parcours, tant personnel que professionnel. Animé par une soif d'apprendre insatiable, je recherche activement de nouvelles opportunités pour approfondir mes connaissances et mon engagement dans ce domaine.
+        <br /><br />
+        Si un stage formateur en industrie automobile et ma participation à divers événements dédiés ont déjà jalonné mon chemin, mon aspiration est de m'y impliquer encore plus concrètement.
+      </p>
+    </div>
+    <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center items-start">
+      <a href="hobbies.html" id="randomMotoLink" title="Voir la galerie" class="inline-block">
+        <img
+          id="randomMotoImg"
+          src="galerie/default.jpg"
+          alt="Passion mécanique"
+          class="rounded-lg shadow-lg max-h-[320px] w-auto"
+        />
+      </a>
+    </div>
+  </div>
+
+
+
+<!-- script JS placé ici -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const imageList = [
+   "IMG_6415.JPG",
+    "IMG_6416.JPG",
+    "IMG_6417.JPG",
+    "IMG_5708.JPG",
+    "IMG_6522.JPG",
+    "IMG_6780.JPG",
+    "IMG_7257.JPG",
+    "IMG_7626.JPG",
+    "IMG_7644.JPG",
+    "IMG_7671.JPG",
+    "IMG_7677.JPG",
+    "IMG_7750.JPG",
+    "IMG_7751.JPG",
+    "IMG_7873.JPG",
+    "IMG_7901.JPG",
+    "IMG_7903.JPG",
+    "IMG_8054.JPG",
+    "IMG_8598.JPG",
+
+  ];
+
+  const randomIndex = Math.floor(Math.random() * imageList.length);
+  const selectedImage = 'galerie/${imageList[randomIndex]}';
+
+  const imageElement = document.getElementById("randomMotoImg");
+  if (imageElement) {
+    imageElement.src = selectedImage;
+  }
+});
+</script>
+
+  </div>  
+</section>
+
+
+  </div>  
+</section>
+
+
+
+<section class="max-w-6xl mx-auto px-6 py-12">
+  <h2 class="text-3xl font-bold text-purple-800 mb-4">Pourquoi m’accueillir en alternance ?</h2>
+  <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+    <li>Formation rigoureuse en conception mécanique (CAO, calculs, assemblages)</li>
+    <li>Expérience concrète à travers divers projets académiques</li>
+    <li>Autonome, curieux, et passionné par la mécanique et l’innovation</li>
+    <li>Excellente capacité à travailler en équipe et en autonomie</li>
+  </ul>
+</section>
+
+
+  </div>
+</section>
+
+
+  <!-- Navigation universelle entre sections -->
+<section class="bg-gray-900 py-10 mt-16 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-xl font-semibold text-center text-white mb-8">Explorer le portfolio</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-300 text-center">
+
+
+      <!-- Expériences -->
+      <a href="education.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/education.png" alt="Éducation" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <div class="p-2">Éducation</div>
+      </a>
+
+       <!-- Expériences -->
+      <a href="experiences.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/experience.png" alt="Expériences" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <div class="p-2">Expériences</div>
+      </a>
+
+
+      <!-- Projets -->
+      <a href="projects.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/projet.png" alt="Projets" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <div class="p-2">Projets</div>
+      </a>
+
+      <!-- Galerie -->
+      <a href="hobbies.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/galerie.png" alt="Galerie" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <div class="p-2">Galerie</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-16 py-6 text-center text-sm text-gray-600">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
+      <p class="text-gray-500">© 2025 Nathan Ochem</p>
+      <div class="flex space-x-6">
+        <a href="mailto:nathan.ochem@email.com" class="text-blue-600 hover:underline hover:text-blue-800 transition">📧 Email</a>
+        <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:underline hover:text-blue-800 transition">🔗 LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+
+
+<script src="random-image.js"></script>
+
+</body>
+</html>
