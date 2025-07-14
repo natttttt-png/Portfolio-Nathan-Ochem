@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nathan Ochem - Home page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-100 text-gray-900 font-sans min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="img/Logonathanochem.png" alt="Logo Nathan Ochem" class="h-8 w-8" />
+        <span class="text-xl font-bold text-black-800">Nathan Ochem</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
+        <a href="experiences-en.html" class="hover:text-purple-600">Experiences</a>
+  <a href="education-en.html" class="hover:text-purple-600">Education</a>
+  <a href="projects-en.html" class="hover:text-purple-600">Projects</a>
+  <a href="hobbies-en.html" class="hover:text-purple-600">Gallery</a>
+        <a href="index.html" class="text-sm text-blue-600 hover:underline">FR</a>
+      </nav>
+      <button id="burgerBtn" class="md:hidden focus:outline-none" aria-label="Menu">
+        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 bg-white border-t text-sm font-medium text-gray-700">
+        <a href="experiences-en.html" class="hover:text-purple-600">Experiences</a>
+  <a href="education-en.html" class="hover:text-purple-600">Education</a>
+  <a href="projects-en.html" class="hover:text-purple-600">Projects</a>
+  <a href="hobbies-en.html" class="hover:text-purple-600">Gallery</a>
+      <a href="index-en.html" class="text-sm text-blue-600 hover:underline">🇬🇧</a>
+    </div>
+  </header>
+
+<main class="max-w-6xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-12">
+  <div class="md:w-1/2 text-center md:text-left">
+    <h1 class="text-5xl font-extrabold text-purple-800 mb-6 leading-tight">Nathan Ochem</h1>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      I am currently a fourth-year Mechanical Engineering student at the Polytechnic University School of Lille. My education allows me to deepen key concepts and techniques in this field.
+      <br /><br />
+      Curious, rigorous, and creative, I seek to contribute to ambitious projects where performance, ingenuity, and teamwork drive excellence.
+    </p>
+  </div>
+
+  <div class="md:w-1/2 flex justify-center">
+  <img src="img/portrait.png" alt="Professional portrait of Nathan Ochem" class="rounded-full shadow-xl max-w-xs w-full object-cover" />
+</div>
+</main>
+
+<section class="max-w-6xl mx-auto px-6 py-12">
+  <h2 class="text-3xl font-bold text-purple-800 mb-4">Professional Objective</h2>
+  <p class="text-gray-700 text-lg leading-relaxed">
+    Currently seeking a work-study position for my final year of mechanical engineering studies, I aim to engage in a concrete project focused on design, simulation, or industrialization.
+  </p>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-12 bg-gray-50 rounded-lg">
+  <h2 class="text-3xl font-bold text-purple-800 mb-4">Automotive and Motorcycle Passion</h2>
+  <div class="md:flex md:items-start gap-6">
+    <div class="md:w-2/3">
+      <p class="text-gray-700 text-lg leading-relaxed">
+        My passion for motorsports drives my journey, both personally and professionally. Fueled by an insatiable thirst for learning, I actively seek new opportunities to deepen my knowledge and commitment in this field.
+        <br /><br />
+        While a formative internship in the automotive industry and my participation in various dedicated events have already marked my path, my aspiration is to get involved even more concretely.
+      </p>
+    </div>
+    <div class="md:w-1/3 mt-6 md:mt-0 flex justify-center items-start">
+      <a href="hobbies.html" id="randomMotoLink" title="View the gallery" class="inline-block">
+        <img
+          id="randomMotoImg"
+          src="galerie/default.jpg"
+          alt="Mechanical passion"
+          class="rounded-lg shadow-lg max-h-[320px] w-auto"
+        />
+      </a>
+    </div>
+  </div>
+
+
+
+
+<!-- script JS placé ici -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const imageList = [
+   "IMG_6415.JPG",
+    "IMG_6416.JPG",
+    "IMG_6417.JPG",
+    "IMG_5708.JPG",
+    "IMG_6522.JPG",
+    "IMG_6780.JPG",
+    "IMG_7257.JPG",
+    "IMG_7626.JPG",
+    "IMG_7644.JPG",
+    "IMG_7671.JPG",
+    "IMG_7677.JPG",
+    "IMG_7750.JPG",
+    "IMG_7751.JPG",
+    "IMG_7873.JPG",
+    "IMG_7901.JPG",
+    "IMG_7903.JPG",
+    "IMG_8054.JPG",
+    "IMG_8598.JPG",
+
+  ];
+
+  const randomIndex = Math.floor(Math.random() * imageList.length);
+  const selectedImage = 'galerie/${imageList[randomIndex]}';
+
+  const imageElement = document.getElementById("randomMotoImg");
+  if (imageElement) {
+    imageElement.src = selectedImage;
+  }
+});
+</script>
+  </div>  
+</section>
+
+
+
+<section class="max-w-6xl mx-auto px-6 py-12">
+  <h2 class="text-3xl font-bold text-purple-800 mb-4">Why Choose Me for a Work-Study Position?</h2>
+  <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+    <li>Rigorous training in mechanical design (CAD, calculations, assemblies)</li>
+    <li>Hands-on experience through various academic projects</li>
+    <li>Autonomous, curious, and passionate about mechanics and innovation</li>
+    <li>Excellent ability to work both in teams and independently</li>
+  </ul>
+</section>
+
+<!-- Navigation between sections -->
+<section class="bg-gray-900 py-10 mt-16 border-t border-gray-800">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-xl font-semibold text-center text-white mb-8">Explore the Portfolio</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-300 text-center">
+
+      <!-- Education -->
+      <a href="education-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/education.png" alt="Education" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+        <div class="p-2">Education</div>
+      </a>
+
+      <!-- Experience -->
+      <a href="experiences-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/experience.png" alt="Experience" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+        <div class="p-2">Experience</div>
+      </a>
+
+      <!-- Projects -->
+      <a href="projects-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/projet.png" alt="Projects" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+        <div class="p-2">Projects</div>
+      </a>
+
+      <!-- Gallery -->
+      <a href="hobbies-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+        <img src="img/galerie.png" alt="Gallery" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+        <div class="p-2">Gallery</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white border-t mt-16 py-6 text-center text-sm text-gray-600">
+  <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
+    <p class="text-gray-500">© 2025 Nathan Ochem</p>
+    <div class="flex space-x-6">
+      <a href="mailto:nathan.ochem@email.com" class="text-blue-600 hover:underline hover:text-blue-800 transition">📧 Email</a>
+      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:underline hover:text-blue-800 transition">🔗 LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
+
+<script src="random-image.js"></script>
+
+</body>
+</html>
