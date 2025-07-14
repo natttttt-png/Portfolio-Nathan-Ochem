@@ -20,7 +20,7 @@
         <a href="index-en.html" class="hover:text-purple-600">Home</a>
         <a href="experiences-en.html" class="hover:text-purple-600">Experiences</a>
         <a href="projects-en.html" class="hover:text-purple-600">Projects</a>
-        <a href="hobbies-en.html" class="hover:text-purple-600">Hobbies</a>
+        <a href="hobbies-en.html" class="hover:text-purple-600">Gallery</a>
         <a href="education.html" class="text-sm text-blue-600 hover:underline">🇫🇷</a>
       </nav>
       <button id="burgerBtn" class="md:hidden focus:outline-none" aria-label="Menu">
@@ -34,6 +34,7 @@
       <a href="experiences-en.html" class="block py-2 hover:text-purple-600">Experiences</a>
       <a href="projects-en.html" class="block py-2 hover:text-purple-600">Projects</a>
       <a href="hobbies-en.html" class="block py-2 hover:text-purple-600">Gallery</a>
+      <a href="education.html" class="text-sm text-blue-600 hover:underline">🇫🇷</a>
     </div>
   </header>
 
@@ -320,6 +321,16 @@
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burgerBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
     });
   });
 </script>

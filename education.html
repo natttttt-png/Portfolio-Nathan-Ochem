@@ -20,7 +20,7 @@
         <a href="index.html" class="hover:text-purple-600">Accueil</a>
         <a href="experiences.html" class="hover:text-purple-600">Expériences</a>
         <a href="projects.html" class="hover:text-purple-600">Projets</a>
-        <a href="hobbies.html" class="hover:text-purple-600">Hobbies</a>
+        <a href="hobbies.html" class="hover:text-purple-600">Galerie</a>
         <a href="education-en.html" class="text-sm text-blue-600 hover:underline">🇬🇧</a>
       </nav>
       <button id="burgerBtn" class="md:hidden focus:outline-none" aria-label="Menu">
@@ -34,6 +34,7 @@
       <a href="experiences.html" class="block py-2 hover:text-purple-600">Expériences</a>
       <a href="projects.html" class="block py-2 hover:text-purple-600">Projets</a>
       <a href="hobbies.html" class="block py-2 hover:text-purple-600">Galerie</a>
+      <a href="education-en.html" class="text-sm text-blue-600 hover:underline">🇬🇧</a>
     </div>
   </header>
 
@@ -325,6 +326,16 @@
       });
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burgerBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+</script>
 
 </body>
 </html>
