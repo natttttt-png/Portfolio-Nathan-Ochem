@@ -5,50 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Experiences - Nathan Ochem</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.js"></script>
+  <link href="apple-style.css" rel="stylesheet" />
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .image-hover-zoom {
+      transition: transform 0.4s ease;
+    }
+    .image-hover-zoom:hover {
+      transform: scale(1.05);
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ccc, transparent);
+      margin: 4rem auto;
+    }
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #0071e3;
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 9999px;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: none;
+      z-index: 100;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    body.dark {
+      background: #1d1d1f;
+      color: #f5f5f7;
+    }
+    body.dark header,
+    body.dark footer,
+    body.dark section {
+      background-color: #2c2c2e;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .experience-logo {
+      height: 4rem;      /* h-16 = 4rem = 64px */
+      width: 4rem;       /* w-16 = 4rem = 64px */
+      object-fit: contain;
+      border-radius: 0.375rem; /* rounded-md */
+      border: 1px solid #D1D5DB; /* border-gray-300 */
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-white to-purple-100 text-gray-900 font-sans min-h-screen">
 
-  <!-- HEADER -->
-  <header class="bg-white shadow sticky top-0 z-10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index-en.html" class="flex items-center space-x-2" aria-label="Home - Nathan Ochem">
-        <img src="img/Logonathanochem.png" alt="Nathan Ochem Logo" class="h-8 w-8" />
-        <span class="text-xl font-bold text-gray-800">Nathan Ochem</span>
+<body>
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-300 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <a href="index-en.html" class="flex items-center space-x-3">
+        <img src="img/Logonathanochem.png" alt="Nathan Ochem Logo" class="h-10 w-10" />
+        <span class="text-2xl font-semibold tracking-tight text-gray-900 select-none">Nathan Ochem</span>
       </a>
-
-      <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700" role="navigation" aria-label="Main menu">
-        <a href="index-en.html" class="hover:text-purple-600">Home</a>
-        <a href="education-en.html" class="hover:text-purple-600">Education</a>
-        <a href="projects-en.html" class="hover:text-purple-600">Projects</a>
-        <a href="hobbies-en.html" class="hover:text-purple-600">Gallery</a>
-        <a href="experiences.html" class="text-sm text-blue-600 hover:underline" aria-current="page">FR</a>
+      <nav class="hidden md:flex space-x-8 text-sm font-semibold text-gray-700">
+        <a href="index-en.html" class="hover:text-blue-600 transition-colors duration-200">Home</a>
+        <a href="education-en.html" class="hover:text-blue-600 transition-colors duration-200">Education</a>
+        <a href="projects-en.html" class="hover:text-blue-600 transition-colors duration-200">Projects</a>
+        <a href="hobbies-en.html" class="hover:text-blue-600 transition-colors duration-200">Gallery</a>
+        <a href="experiences.html" class="text-blue-600 hover:underline">🇫🇷</a>
       </nav>
-
-      <button id="burgerBtn" class="md:hidden focus:outline-none" aria-label="Menu">
-        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <button id="burgerBtn" class="md:hidden focus:outline-none text-gray-700 hover:text-blue-600 transition-colors duration-200" aria-label="Menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-
-    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 bg-white border-t text-sm font-medium text-gray-700" role="navigation" aria-label="Mobile menu">
-      <a href="index-en.html" class="block py-2 hover:text-purple-600">Home</a>
-      <a href="education-en.html" class="block py-2 hover:text-purple-600">Education</a>
-      <a href="projects-en.html" class="block py-2 hover:text-purple-600">Projects</a>
-      <a href="hobbies-en.html" class="block py-2 hover:text-purple-600">Gallery</a>
-      <a href="experiences.html" class="text-sm text-blue-600 hover:underline" aria-current="page">FR</a>
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 bg-white border-t border-gray-300 text-sm font-semibold text-gray-700">
+      <a href="index-en.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Home</a>
+      <a href="education-en.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Education</a>
+      <a href="projects-en.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Projects</a>
+      <a href="hobbies-en.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Gallery</a>
+      <a href="experiences.html" class="block py-3 text-blue-600 hover:underline">🇫🇷</a>
     </div>
   </header>
 
-
   <!-- CONTENT -->
   <main class="py-16 px-4 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-12 text-center">Professional Experiences</h2>
+
+    <section class="parallax fade-in min-h-[60vh]">
+      <h2 class="text-3xl font-bold mb-12 text-center">Professional Experiences</h2>
+    </section>
 
     <!-- Gillet Automobiles -->
-    <section class="mb-16">
+    <section class="mb-16 parallax fade-in min-h-[60vh]">
       <div class="flex items-center gap-6 mb-4">
         <img src="img/gillet horizontal cores black@400x.png" alt="Gillet Automobiles Logo" class="h-16 w-16 object-contain rounded-md border border-gray-300" />
         <h3 class="text-2xl font-semibold tracking-wide">Gillet Automobiles</h3>
@@ -81,7 +139,7 @@
     </section>
 
     <!-- Elis -->
-    <section class="mb-16">
+    <section class="mb-16 parallax fade-in min-h-[60vh]">
       <div class="flex items-center gap-6 mb-4">
         <img src="img/Logo_Elis_RVB@3x.png" alt="Elis Logo" class="h-16 w-16 object-contain rounded-md border border-gray-300" />
         <h3 class="text-2xl font-semibold tracking-wide">Elis</h3>
@@ -113,75 +171,99 @@
         </div>
       </div>
     </section>
+
     <!-- McDonald's -->
-    <section class="mb-16">
+    <section class="mb-16 parallax fade-in min-h-[60vh]">
       <div class="flex items-center gap-6 mb-4">
-        <img src="img/McDonald's_Golden_Arches.svg.png" alt="McDonald Logo" class="h-16 w-16 object-contain rounded-md border border-gray-300" />
+        <img src="img/McDonald's_Golden_Arches.svg.png" alt="McDonald's Logo" class="experience-logo" />
         <h3 class="text-2xl font-semibold tracking-wide">McDonald's</h3>
       </div>
-      <p class="text-gray-600 italic mb-4">June 2025 – August 2025</p>
+      <p class="text-gray-600 italic mb-6">June 2022 – July 2022 and August 2023 – August 2023</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h5 class="text-lg font-semibold mb-6">Tasks performed</h5>
-          <div class="space-y-3 text-gray-700">
-            <p><strong>Autonomous management of regulatory tests:</strong></p>
-            <p class="pl-4">Conducting vehicle homologation test campaigns autonomously, based on the 3D model and technical specifications, from protocol preparation to raw data analysis.</p>
-            <p><strong>Design and formatting of documentation:</strong></p>
-            <p class="pl-4">Creating detailed test sheets and analysis reports compliant with European requirements, including 3D model screenshots, instruction sets, and quantified summaries.</p>
-            <p><strong>Monitoring and application of standards:</strong></p>
-            <p class="pl-4">Ongoing self-training on European regulations (EU Regulations, ISO/ADR standards) and rapid adaptation of protocols to any normative changes.</p>
-          </div>
+          <h4 class="text-lg font-semibold mb-4">Tasks accomplished</h4>
+          <ul class="list-disc list-inside space-y-3 text-gray-700">
+            <li>
+              <strong>Versatile work in fast food:</strong>
+              <p class="pl-4">
+                Taking orders, counter service and handling payments, managing queues, and maintaining cleanliness of work areas.
+              </p>
+            </li>
+            <li>
+              <strong>Stress management and rigor:</strong>
+              <p class="pl-4">
+                Significant experience developing the ability to effectively handle pressure in a fast-paced environment while maintaining quality service.
+              </p>
+            </li>
+            <li>
+              <strong>Teamwork:</strong>
+              <p class="pl-4">
+                Close collaboration with colleagues to ensure smooth and responsive service, clear communication, and strong collective organization.
+              </p>
+            </li>
+          </ul>
         </div>
 
         <div>
           <h5 class="text-lg font-semibold mb-4">Skills developed</h5>
           <ul class="list-disc list-inside text-gray-700 text-xs space-y-1 max-w-md">
-            <li>Advanced CAD modeling (SolidWorks, CATIA)</li>
-            <li>Mechanical stress analysis</li>
-            <li>Technical documentation writing</li>
-            <li>Project management and teamwork</li>
+            <li>Organizational skills</li>
+            <li>Versatility</li>
+            <li>Adaptability</li>
+            <li>Communication</li>
+            <li>Flexibility</li>
+            <li>Critical thinking</li>
+            <li>Initiative</li>
+            <li>Autonomy</li>
           </ul>
         </div>
       </div>
+
+      <div class="mt-8 max-w-md text-gray-700 text-xs">
+        <h4 class="font-semibold mb-2">Additional Skills developed</h4>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Stress management in a dynamic environment</li>
+          <li>Rapid adaptability</li>
+          <li>Effective team communication</li>
+          <li>Rigor in task execution</li>
+          <li>Customer service orientation</li>
+          <li>Organization and priority management</li>
+          <li>Compliance with hygiene and safety standards</li>
+        </ul>
+      </div>
     </section>
-  </main>
 
 
-  <!-- Universal navigation between sections -->
-<section class="bg-gray-900 py-10 mt-16 border-t border-gray-800">
+<!-- FOND NOIR LARGE -->
+<section class="bg-gray-900 py-10 mt-16 border-t border-gray-800 fade-in w-full">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-xl font-semibold text-center text-white mb-8">Explore the portfolio</h2>
+    <h2 class="text-xl font-semibold text-center text-white mb-8">Explore the Portfolio</h2>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-300 text-center">
-
-          <!-- Home -->
       <a href="index-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-        <img src="img/maison.png" alt="Home" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <img src="img/maison.png" alt="Home" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
         <div class="p-2">Home</div>
       </a>
-      
-      <!-- Education -->
       <a href="education-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-        <img src="img/education.png" alt="Education" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <img src="img/education.png" alt="Education" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
         <div class="p-2">Education</div>
       </a>
-
-      <!-- Projects -->
       <a href="projects-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-        <img src="img/projet.png" alt="Projects" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <img src="img/projet.png" alt="Projects" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
         <div class="p-2">Projects</div>
       </a>
-
-      <!-- Gallery -->
       <a href="hobbies-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-        <img src="img/galerie.png" alt="Gallery" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <img src="img/galerie.png" alt="Gallery" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
         <div class="p-2">Gallery</div>
       </a>
-
     </div>
   </div>
 </section>
 
+
+   
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="bg-white border-t mt-16 py-6 text-center text-sm text-gray-600">
@@ -208,7 +290,27 @@
       });
     });
 
-    feather.replace();
+    // feather.replace();  // Commenté car feather.js non importé
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faders = document.querySelectorAll('.fade-in');
+      const options = { threshold: 0.1 };
+
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+
+      faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+      });
+    });
   </script>
 
 </body>

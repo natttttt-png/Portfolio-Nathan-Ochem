@@ -1,0 +1,770 @@
+/* apple-style.css */
+
+/* Reset léger */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Typographie et couleurs globales */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Conteneur central */
+.container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  font-feature-settings: "kern";
+}
+
+h1 { font-size: 2.75rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Paragraphes */
+p {
+  margin-bottom: 1.25rem;
+  color: #3c3c4399;
+}
+
+/* Listes */
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #3c3c4399;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Liens */
+a {
+  color: #0071e3; /* Apple blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover,
+a:focus {
+  color: #005bb5;
+  outline: none;
+  text-decoration: underline;
+}
+
+/* Boutons */
+button, .btn {
+  display: inline-block;
+  background-color: #0071e3;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgb(0 113 227 / 0.35);
+  user-select: none;
+}
+button:hover, .btn:hover,
+button:focus-visible, .btn:focus-visible {
+  background-color: #005bb5;
+  box-shadow: 0 4px 16px rgb(0 91 181 / 0.45);
+  outline: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+img:hover, img:focus {
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Sections espacées */
+section {
+  margin-bottom: 4rem;
+}
+
+/* Cards & containers */
+.card {
+  background-color: #fff;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.07);
+  transition: box-shadow 0.3s ease;
+}
+.card:hover, .card:focus-within {
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.10);
+  outline: none;
+}
+
+/* Navbar (si tu as une barre de navigation) */
+.navbar {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Formulaires */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #1d1d1f;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #0071e3;
+  box-shadow: 0 0 8px rgb(0 113 227 / 0.3);
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background-color: #fff;
+  border-top: 1px solid #d2d2d7;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6e6e73;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
+.p-4 {
+  padding: 1rem;
+}
+.rounded-lg {
+  border-radius: 12px;
+}
+.shadow-lg {
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.08);
+}
+.transition {
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar esthétique (optionnel) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f7;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c6;
+  border-radius: 8px;
+  border: 2px solid #f5f5f7;
+}
+
+/* apple-style.css */
+
+/* Police inspirée Apple (San Francisco style) */
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+body {
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e3eaf2 100%);
+  color: #1d1d1f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+header {
+  background: #fff;
+  border-bottom: 1px solid #d2d2d7;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+header a {
+  color: #1d1d1f;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+header a:hover {
+  color: #0071e3; /* Apple blue */
+}
+
+/* Navigation */
+nav a {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+}
+
+nav a:hover {
+  background: #e5f0ff;
+}
+
+/* Bouton burger */
+#burgerBtn svg {
+  stroke: #1d1d1f;
+  transition: stroke 0.3s ease;
+}
+
+#burgerBtn:hover svg {
+  stroke: #0071e3;
+}
+
+/* Titres */
+h1, h2, h3 {
+  color: #1d1d1f;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Textes */
+p, li {
+  color: #3c3c4399;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.125rem; /* 18px */
+}
+
+/* Liens dans le footer */
+footer a {
+  color: #0071e3;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Sections */
+section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Cartes et conteneurs */
+.bg-gray-50, .bg-white {
+  background: #fff;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+/* Images rondes */
+img.rounded-full {
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  transition: transform 0.3s ease;
+}
+
+img.rounded-full:hover {
+  transform: scale(1.05);
+}
+
+/* Boutons */
+a.inline-block {
+  background-color: #0071e3;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.inline-block:hover {
+  background-color: #005bb5;
+}
+
+/* Grid responsive */
+.grid {
+  gap: 1.5rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column !important;
+  }
+  
+  nav {
+    display: none !important;
+  }
+}
+/* styles-apple.css */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1d1d1f;
+  background: #f5f5f7;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+a {
+  color: #0071e3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #005bb5;
+  text-decoration: underline;
+}
+
+.shadow-md {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.shadow-xl {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.rounded-xl {
+  border-radius: 16px;
+}
+/* styles-apple.css */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1d1d1f;
+  background: #f5f5f7;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+a {
+  color: #0071e3;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #005bb5;
+  text-decoration: underline;
+}
+
+.shadow-md {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.shadow-xl {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.rounded-xl {
+  border-radius: 16px;
+}
+
+/* Logo */
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  color: #1d1d1f;
+  text-decoration: none;
+}
+
+/* Nav links */
+.nav-link {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  color: #1d1d1f;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background-color: #e5f0ff;
+  color: #0071e3;
+  outline: none;
+}
+
+/* apple-style-enhanced.css */
+
+/* Reset léger */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Police Apple San Francisco (via système) */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+  font-size: 17px; /* taille par défaut Apple */
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Conteneur principal centré */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* Titres : nuances, poids, espacements */
+h1, h2, h3, h4, h5, h6 {
+  color: #1d1d1f;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  font-feature-settings: "kern" 1;
+}
+
+h1 {
+  font-size: 2.75rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Paragraphes : gris très doux et confortable */
+p, li {
+  color: #3c3c4399;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Listes */
+ul, ol {
+  margin-left: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+li {
+  margin-bottom: 0.6rem;
+}
+
+/* Liens bleu Apple, avec transition douce */
+a {
+  color: #0071e3;
+  text-decoration: none;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline-offset: 3px;
+}
+
+a:hover,
+a:focus-visible {
+  color: #005bb5;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Focus visible accessible */
+:focus-visible {
+  outline: 3px solid #0071e3;
+  outline-offset: 3px;
+}
+
+/* Boutons stylés Apple, arrondis, ombres légères */
+button, .btn {
+  display: inline-block;
+  background-color: #0071e3;
+  color: #fff;
+  border: none;
+  border-radius: 9999px; /* pill-shaped */
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgb(0 113 227 / 0.35);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease,
+    transform 0.15s ease;
+  user-select: none;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+button:hover,
+.btn:hover,
+button:focus-visible,
+.btn:focus-visible {
+  background-color: #005bb5;
+  box-shadow: 0 8px 24px rgb(0 91 181 / 0.5);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+/* Images : arrondies, ombres subtiles, transition de scale */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: block;
+}
+
+img:hover,
+img:focus-visible {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.15);
+  outline: none;
+}
+
+/* Sections espacées avec padding généreux */
+section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Cartes / containers */
+.card {
+  background-color: #fff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.07);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 20px 48px rgb(0 0 0 / 0.12);
+  outline: none;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #fff;
+  padding: 1.25rem 3rem;
+  box-shadow: 0 1px 12px rgb(0 0 0 / 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.navbar a {
+  color: #1d1d1f;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.navbar a:hover,
+.navbar a:focus-visible {
+  background-color: #e5f0ff;
+  color: #0071e3;
+  outline: none;
+}
+
+/* Burger menu icon */
+#burgerBtn svg {
+  stroke: #1d1d1f;
+  transition: stroke 0.3s ease;
+}
+
+#burgerBtn:hover svg,
+#burgerBtn:focus-visible svg {
+  stroke: #0071e3;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  .container {
+    padding: 2rem 1rem;
+  }
+  .navbar a {
+    padding: 0.5rem;
+  }
+}
+
+/* Scrollbar esthétique (optionnel) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f7;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c6;
+  border-radius: 8px;
+  border: 2px solid #f5f5f7;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.parallax {
+  background-image: url('img/tonImage.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 1.5rem 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+}
+
+.parallax {
+  background-image: url('img/background.jpg'); /* ton image ici */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section {
+  min-height: 60vh;
+}
+main {
+  padding-top: 5rem;  /* plus d’air au-dessus */
+  padding-bottom: 5rem;
+}
+
+h2 {
+  letter-spacing: 0.05em; /* léger espacement comme Apple */
+}
+
+h3, h4 {
+  letter-spacing: 0.02em;
+}
