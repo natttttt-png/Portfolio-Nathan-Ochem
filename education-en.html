@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Educational Background - Nathan Ochem</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     html, body {
       font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
@@ -122,55 +123,6 @@
       color: #232326;
       text-decoration: underline;
     }
-    /* ---------- DARK MODE (via .dark) --------- */
-    .dark, .dark body, html.dark, body.dark {
-      background: #18181a !important;
-      color: #f2f2f5 !important;
-    }
-    .dark .school-card {
-      background: #232326;
-      color: #f2f2f5;
-      box-shadow: 0 10px 32px 0 rgba(0,0,0,0.22), 0 2px 10px 0 rgba(0,0,0,0.16);
-    }
-    .dark .school-logo {
-      background: #242429;
-      border: 1px solid #242429;
-    }
-    .dark .school-title,
-    .dark .school-years,
-    .dark .school-badge,
-    .dark .semester-title {
-      color: #e3e3e8 !important;
-    }
-    .dark .divider {
-      background: linear-gradient(to right, #22222a, #252529, #22222a);
-    }
-    .dark .chip {
-      background: #22222a;
-      color: #e3e3e8;
-      box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12);
-      border: 1px solid #232329;
-    }
-    .dark .chip.project {
-      background: #36363c;
-      color: #f8f8fa;
-      border: 1px solid #29292e;
-    }
-    .dark .apple-link {
-      color: #f5f5fa;
-      border-bottom: 1px dotted #888;
-    }
-    .dark .apple-link:hover {
-      border-bottom: 1px solid #fff;
-      color: #fff;
-    }
-    .dark header,
-    .dark footer,
-    .dark section.bg-gray-100 {
-      background: #1b1b1d !important;
-      color: #e3e3e8;
-      border-color: #26262c;
-    }
     @media (min-width:700px){
       .school-card { padding-left: 4rem; padding-right: 4rem;}
     }
@@ -194,15 +146,9 @@
       <a href="hobbies-en.html" class="hover:underline apple-link">Gallery</a>
       <a href="education.html" class="apple-link">🇫🇷</a>
     </nav>
-    <!-- DARK MODE SWITCH BUTTON -->
-    <button id="themeToggle" class="ml-3 px-3 py-2 rounded-full border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition
-      dark:bg-[#22222a] dark:text-gray-100 dark:border-[#34343c]" title="Toggle theme">
-      <span id="themeIcon" aria-hidden="true">🌙</span>
-    </button>
-    <!-- Burger button for mobile -->
-    <button id="burgerBtn" class="md:hidden ml-4 focus:outline-none" aria-label="Menu">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16"/>
+    <button id="burgerBtn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
@@ -226,7 +172,7 @@
     <div class="school-badge fade-in">Engineering cycle</div>
     <div class="fade-in mb-4 text-sm">
       <a href="docs/maquette Mécanique.pdf" class="apple-link" target="_blank">
-        See the teaching model for the mechanical engineering speciality
+        See the teaching model for the mechanical engineering specialty
       </a>
     </div>
     <hr class="divider"/>
@@ -247,7 +193,7 @@
       <div class="chips-group">
         <span class="chip fade-in"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Structural dynamics</span>
         <span class="chip fade-in"><i data-feather="thermometer" class="w-4 h-4 mr-1"></i>Thermodynamics</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Numerical structure calculation</span>
+        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Numerical calculation</span>
         <span class="chip fade-in"><i data-feather="layers" class="w-4 h-4 mr-1"></i>Composite materials</span>
         <span class="chip fade-in"><i data-feather="wind" class="w-4 h-4 mr-1"></i>Computational fluid mechanics</span>
         <span class="chip fade-in"><i data-feather="settings" class="w-4 h-4 mr-1"></i>Systems design</span>
@@ -258,10 +204,10 @@
       </div>
       <div class="semester-title fade-in">6th semester</div>
       <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="tool" class="w-4 h-4 mr-1"></i>Guidance design & analysis</span>
+        <span class="chip fade-in"><i data-feather="tool" class="w-4 h-4 mr-1"></i>Guidance design/analysis</span>
         <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Production engineering</span>
         <span class="chip fade-in"><i data-feather="zap" class="w-4 h-4 mr-1"></i>Power transmission</span>
-        <span class="chip fade-in"><i data-feather="eye" class="w-4 h-4 mr-1"></i>Dimensioning / metrology</span>
+        <span class="chip fade-in"><i data-feather="eye" class="w-4 h-4 mr-1"></i>Dimensioning/metrology</span>
         <span class="chip fade-in"><i data-feather="globe" class="w-4 h-4 mr-1"></i>Economic environment</span>
         <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Fluid mechanics</span>
         <span class="chip fade-in"><i data-feather="repeat" class="w-4 h-4 mr-1"></i>Deformable solid mechanics</span>
@@ -269,14 +215,14 @@
         <span class="chip fade-in"><i data-feather="code" class="w-4 h-4 mr-1"></i>Numerical methods</span>
         <span class="chip fade-in"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Math tools</span>
         <span class="chip project fade-in"><i data-feather="users" class="w-4 h-4 mr-1"></i>
-          <a href="projects-en.html#projet-prothese" class="apple-link">Prosthesis Project</a>
+          <a href="projects-en.html#projet-prothese" class="apple-link">Prosthesis project</a>
         </span>
       </div>
       <div class="semester-title fade-in">5th semester</div>
       <div class="chips-group">
         <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Technology</span>
         <span class="chip fade-in"><i data-feather="box" class="w-4 h-4 mr-1"></i>Materials</span>
-        <span class="chip fade-in"><i data-feather="link-2" class="w-4 h-4 mr-1"></i>Joint design / analysis</span>
+        <span class="chip fade-in"><i data-feather="link-2" class="w-4 h-4 mr-1"></i>Joint design/analysis</span>
         <span class="chip fade-in"><i data-feather="shield" class="w-4 h-4 mr-1"></i>Strength of materials</span>
         <span class="chip fade-in"><i data-feather="rotate-ccw" class="w-4 h-4 mr-1"></i>Rigid solid mechanics</span>
         <span class="chip fade-in"><i data-feather="code" class="w-4 h-4 mr-1"></i>Computer science</span>
@@ -296,7 +242,7 @@
     <div class="school-badge fade-in">Preparatory cycle</div>
     <div class="fade-in mb-4 text-sm">
       <a href="docs/MAtières PEIP.pdf" class="apple-link" target="_blank">
-        See the academic program of the two-year intensive preparatory course for admission to French engineering schools.
+        See the academic program of the preparatory cycle for French engineering schools.
       </a>
     </div>
     <hr class="divider"/>
@@ -318,13 +264,13 @@
         <span class="chip fade-in"><i data-feather="sun" class="w-4 h-4 mr-1"></i>Electromagnetism & optics</span>
         <span class="chip fade-in"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Signals & linear systems</span>
         <span class="chip fade-in"><i data-feather="thermometer" class="w-4 h-4 mr-1"></i>Thermodynamics</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Kinematics, materials & ODEs</span>
+        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Kinematics, Materials & ODEs</span>
         <span class="chip fade-in"><i data-feather="code" class="w-4 h-4 mr-1"></i>Advanced programming</span>
       </div>
       <div class="semester-title fade-in">2nd semester</div>
       <div class="chips-group">
         <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Electronics basics</span>
-        <span class="chip fade-in"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Math & CS</span>
+        <span class="chip fade-in"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Maths & Computer Science</span>
         <span class="chip fade-in"><i data-feather="target" class="w-4 h-4 mr-1"></i>Newtonian equilibria</span>
         <span class="chip project fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>
           <a href="projects-en.html#projet-robot" class="apple-link">Checkerboard robot project</a>
@@ -333,7 +279,7 @@
       <div class="semester-title fade-in">1st semester</div>
       <div class="chips-group">
         <span class="chip fade-in"><i data-feather="toggle-left" class="w-4 h-4 mr-1"></i>Electrical circuits</span>
-        <span class="chip fade-in"><i data-feather="bar-chart" class="w-4 h-4 mr-1"></i>Math & CS</span>
+        <span class="chip fade-in"><i data-feather="bar-chart" class="w-4 h-4 mr-1"></i>Maths & Computer Science</span>
         <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Chemistry</span>
         <span class="chip fade-in"><i data-feather="triangle" class="w-4 h-4 mr-1"></i>Pythagorean & Cartesian geometry</span>
       </div>
@@ -351,13 +297,13 @@
       <div class="semester-title fade-in">Final year</div>
       <div class="chips-group">
         <span class="chip fade-in"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Mathematics — modeling</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Engineering science — automation</span>
+        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Engineering Science — Automation</span>
         <span class="chip project fade-in"><i data-feather="flag" class="w-4 h-4 mr-1"></i>Electric scooter project</span>
       </div>
       <div class="semester-title fade-in">11th grade</div>
       <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Math — geometry & sequences</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Engineering science — 3D modeling</span>
+        <span class="chip fade-in"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Mathematics — geometry & sequences</span>
+        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Engineering Science — 3D modeling</span>
         <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Physics & chemistry</span>
         <span class="chip project fade-in"><i data-feather="flag" class="w-4 h-4 mr-1"></i>Line-following robot project</span>
       </div>
@@ -407,7 +353,7 @@
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
   feather.replace();
-  // Menu burger
+  // Burger menu
   const burgerBtn = document.getElementById('burgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   burgerBtn.addEventListener('click', () => {
@@ -419,7 +365,7 @@
     });
   });
 
-  // Fade-in animated for EACH .fade-in element
+  // Fade-in animation for each .fade-in
   document.addEventListener("DOMContentLoaded", () => {
     const faders = document.querySelectorAll('.fade-in');
     let delay = 0;
@@ -430,46 +376,6 @@
       delay += 75;
     });
   });
-
-  // ----------- DARK MODE SWITCHER ------------
-  function applyTheme(theme) {
-    document.documentElement.classList.remove('dark');
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.getElementById('themeIcon').textContent = '🌞';
-    } else if (theme === 'light') {
-      document.documentElement.classList.remove('dark');
-      document.getElementById('themeIcon').textContent = '🌙';
-    } else { // auto
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
-        document.getElementById('themeIcon').textContent = '🌞';
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.getElementById('themeIcon').textContent = '🌙';
-      }
-    }
-  }
-
-  function getTheme() {
-    return localStorage.getItem('theme') || 'auto';
-  }
-
-  document.getElementById('themeToggle').addEventListener('click', function () {
-    let current = getTheme();
-    let next = (current === 'light') ? 'dark' : (current === 'dark') ? 'auto' : 'light';
-    localStorage.setItem('theme', next);
-    applyTheme(next);
-    this.title = (next === 'dark') ? "Dark mode" : (next === 'light') ? "Light mode" : "Auto mode";
-  });
-
-  applyTheme(getTheme());
-
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-      if (getTheme() === 'auto') applyTheme('auto');
-    });
-  }
 </script>
 </body>
 </html>

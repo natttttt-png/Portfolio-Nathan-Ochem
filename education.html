@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Parcours Éducatif - Nathan Ochem</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
     html, body {
       font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
@@ -122,62 +123,8 @@
       color: #232326;
       text-decoration: underline;
     }
-    /* ---------- DARK MODE (via .dark) --------- */
-    .dark, .dark body, html.dark, body.dark {
-      background: #18181a !important;
-      color: #f2f2f5 !important;
-    }
-    .dark .school-card {
-      background: #232326;
-      color: #f2f2f5;
-      box-shadow: 0 10px 32px 0 rgba(0,0,0,0.22), 0 2px 10px 0 rgba(0,0,0,0.16);
-    }
-    .dark .school-logo {
-      background: #242429;
-      border: 1px solid #242429;
-    }
-    .dark .school-title,
-    .dark .school-years,
-    .dark .school-badge,
-    .dark .semester-title {
-      color: #e3e3e8 !important;
-    }
-    .dark .divider {
-      background: linear-gradient(to right, #22222a, #252529, #22222a);
-    }
-    .dark .chip {
-      background: #22222a;
-      color: #e3e3e8;
-      box-shadow: 0 1px 6px 0 rgba(0,0,0,0.12);
-      border: 1px solid #232329;
-    }
-    .dark .chip.project {
-      background: #36363c;
-      color: #f8f8fa;
-      border: 1px solid #29292e;
-    }
-    .dark .apple-link {
-      color: #f5f5fa;
-      border-bottom: 1px dotted #888;
-    }
-    .dark .apple-link:hover {
-      border-bottom: 1px solid #fff;
-      color: #fff;
-    }
-    .dark header,
-    .dark footer,
-    .dark section.bg-gray-100 {
-      background: #1b1b1d !important;
-      color: #e3e3e8;
-      border-color: #26262c;
-    }
     @media (min-width:700px){
       .school-card { padding-left: 4rem; padding-right: 4rem;}
-    }
-    /* Responsive logo */
-    @media (max-width: 500px) {
-      .school-logo { height: 95px; width: 95px; }
-      .school-card { padding: 2.5rem 0.3rem 1.6rem 0.3rem; }
     }
   </style>
 </head>
@@ -195,15 +142,9 @@
       <a href="hobbies.html" class="hover:underline apple-link">Galerie</a>
       <a href="education-en.html" class="apple-link">🇬🇧</a>
     </nav>
-    <!-- BOUTON SWITCH DARK MODE -->
-    <button id="themeToggle" class="ml-3 px-3 py-2 rounded-full border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition
-      dark:bg-[#22222a] dark:text-gray-100 dark:border-[#34343c]" title="Changer de mode">
-      <span id="themeIcon" aria-hidden="true">🌙</span>
-    </button>
-    <!-- Bouton burger pour mobile -->
-    <button id="burgerBtn" class="md:hidden ml-4 focus:outline-none" aria-label="Menu">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16"/>
+    <button id="burgerBtn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </div>
@@ -431,46 +372,6 @@
       delay += 75;
     });
   });
-
-  // ----------- DARK MODE SWITCHER ------------
-  function applyTheme(theme) {
-    document.documentElement.classList.remove('dark');
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.getElementById('themeIcon').textContent = '🌞';
-    } else if (theme === 'light') {
-      document.documentElement.classList.remove('dark');
-      document.getElementById('themeIcon').textContent = '🌙';
-    } else { // auto
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
-        document.getElementById('themeIcon').textContent = '🌞';
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.getElementById('themeIcon').textContent = '🌙';
-      }
-    }
-  }
-
-  function getTheme() {
-    return localStorage.getItem('theme') || 'auto';
-  }
-
-  document.getElementById('themeToggle').addEventListener('click', function () {
-    let current = getTheme();
-    let next = (current === 'light') ? 'dark' : (current === 'dark') ? 'auto' : 'light';
-    localStorage.setItem('theme', next);
-    applyTheme(next);
-    this.title = (next === 'dark') ? "Mode sombre" : (next === 'light') ? "Mode clair" : "Mode auto";
-  });
-
-  applyTheme(getTheme());
-
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-      if (getTheme() === 'auto') applyTheme('auto');
-    });
-  }
 </script>
 </body>
 </html>
