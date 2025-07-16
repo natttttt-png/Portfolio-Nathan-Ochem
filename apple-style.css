@@ -1,0 +1,260 @@
+/* ========== APPLE-INSPIRED BASE RESET ========== */
+:root {
+  --apple-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --color-bg: #f5f5f7;
+  --color-bg-card: #fff;
+  --color-text: #1d1d1f;
+  --color-text-light: #3c3c4399;
+  --color-border: #e5e5ea;
+  --color-grey: #aaa;
+  --color-link: #222; /* liens neutres */
+  --color-link-hover: #111;
+  --color-chip-bg: #ececec;
+  --color-chip-text: #1d1d1f;
+  --color-chip-project: #e8eaf0;
+}
+
+/* ---- DARK MODE (auto sur .dark) ---- */
+.dark {
+  --color-bg: #1b1b1e;
+  --color-bg-card: #232326;
+  --color-text: #f5f5f7;
+  --color-text-light: #bbb;
+  --color-border: #29292d;
+  --color-grey: #555;
+  --color-link: #ededf5;
+  --color-link-hover: #fff;
+  --color-chip-bg: #29292d;
+  --color-chip-text: #ededf5;
+  --color-chip-project: #313138;
+}
+
+/* Reset simple */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--apple-font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+/* ====================== TYPO ====================== */
+h1, h2, h3, h4 {
+  color: var(--color-text);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.9rem;
+  margin-top: 0;
+}
+h1 { font-size: 2.5rem; margin-bottom: 2.5rem; }
+h2 { font-size: 2rem; margin-bottom: 2rem; }
+h3 { font-size: 1.3rem; margin-bottom: 1.1rem; }
+h4 { font-size: 1.1rem; margin-bottom: 0.8rem; font-weight: 600; letter-spacing: 0.01em; }
+
+p, li { color: var(--color-text-light); font-weight: 400; font-size: 1.07rem; }
+
+a {
+  color: var(--color-link);
+  text-decoration: underline dotted var(--color-grey);
+  transition: color 0.18s;
+}
+a:hover, a:focus-visible {
+  color: var(--color-link-hover);
+  text-decoration: underline solid var(--color-link-hover);
+  outline: none;
+}
+
+/* ====================== LAYOUT ====================== */
+section {
+  margin-bottom: 4rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.container, .main-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* ====================== SCHOOL CARDS ====================== */
+.school-card {
+  background: var(--color-bg-card);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.09);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-bottom: 2.7rem;
+  border: 1px solid var(--color-border);
+  transition: background 0.3s, box-shadow 0.2s;
+}
+
+.school-logo {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 28px;
+  margin: 0 auto 1.5rem auto;
+  background: #fafafd;
+  box-shadow: 0 2px 16px rgba(80,80,80,0.06);
+  transition: box-shadow 0.23s;
+}
+
+.school-title {
+  font-size: 1.45rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+.school-years {
+  color: var(--color-grey);
+  text-align: center;
+  margin-bottom: 0.75rem;
+  font-size: 1.06rem;
+  letter-spacing: 0.01em;
+}
+.school-badge {
+  display: inline-block;
+  margin: 0 auto 1.3rem auto;
+  padding: 0.35em 1.2em;
+  border-radius: 1em;
+  font-size: 1rem;
+  background: var(--color-chip-bg);
+  color: var(--color-chip-text);
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ====================== CHIPS/BADGES ====================== */
+.chips-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 1.7rem;
+}
+.chip {
+  background: var(--color-chip-bg);
+  color: var(--color-chip-text);
+  font-size: 1.02rem;
+  padding: 0.37em 1.2em;
+  border-radius: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.05);
+  transition: background 0.18s, color 0.18s;
+}
+.chip.project {
+  background: var(--color-chip-project);
+  font-style: italic;
+}
+.chip a {
+  color: inherit !important;
+  text-decoration: underline dotted var(--color-grey);
+  font-weight: 500;
+}
+
+/* ====================== SEMESTER TITLES ====================== */
+.semester-title {
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 2.1rem 0 0.8rem 0;
+  font-size: 1.12rem;
+  letter-spacing: 0.01em;
+}
+
+/* ====================== DIVERS ====================== */
+.divider {
+  height: 1px;
+  border: none;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+  margin: 2.5rem auto 2.5rem auto;
+  width: 90%;
+}
+
+.apple-link {
+  color: var(--color-link);
+  text-decoration: underline dotted var(--color-grey);
+  font-weight: 500;
+  transition: color 0.18s;
+}
+.apple-link:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline solid var(--color-link-hover);
+}
+
+/* ====================== FADE-IN ANIMATION ====================== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ====================== NAV/FOOTER ====================== */
+footer, header {
+  background: var(--color-bg-card);
+  color: var(--color-grey);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+  user-select: none;
+}
+
+footer a, header a {
+  color: var(--color-link);
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0 0.5em;
+}
+footer a:hover, header a:hover { color: var(--color-link-hover); text-decoration: underline; }
+
+.portfolio-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin: 2rem auto 0 auto;
+  max-width: 700px;
+}
+@media (min-width: 600px) {
+  .portfolio-nav { grid-template-columns: repeat(4, 1fr); }
+}
+.portfolio-nav a {
+  background: var(--color-bg-card);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.07);
+  padding: 0.7rem 0.2rem 0.4rem 0.2rem;
+  color: var(--color-link);
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.portfolio-nav a:hover { background: var(--color-chip-bg); color: var(--color-link-hover); }
+
+.portfolio-nav img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto 0.4rem auto;
+  background: transparent;
+  border-radius: 9px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 0.04);
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .school-logo { width: 110px; height: 110px; }
+  .container, .main-container { padding: 1rem 0.3rem; }
+}
+
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-thumb { background: #ddd; border-radius: 7px; }
+
+/* ========== END ========== */
