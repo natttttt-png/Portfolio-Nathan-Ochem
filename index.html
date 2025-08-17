@@ -75,7 +75,6 @@
       <a href="experiences.html" class="hover:text-blue-600 transition-colors duration-200">Expériences</a>
       <a href="education.html" class="hover:text-blue-600 transition-colors duration-200">Éducation</a>
       <a href="projects.html" class="hover:text-blue-600 transition-colors duration-200">Projets</a>
-      <a href="hobbies.html" class="hover:text-blue-600 transition-colors duration-200">Galerie</a>
       <a href="index-en.html" class="text-blue-600 hover:underline">🇬🇧</a>
     </nav>
     <button id="burgerBtn" class="md:hidden focus:outline-none text-gray-700 hover:text-blue-600 transition-colors duration-200" aria-label="Menu">
@@ -88,7 +87,6 @@
     <a href="experiences.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Expériences</a>
     <a href="education.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Éducation</a>
     <a href="projects.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Projets</a>
-    <a href="hobbies.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Galerie</a>
     <a href="index-en.html" class="block py-3 text-blue-600 hover:underline">🇬🇧</a>
   </div>
 </header>
@@ -214,8 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <section class="parallax fade-in min-h-[60vh]"> 
   
-  <!-- Navigation universelle entre sections -->
-  
+ 
 <!-- Navigation universelle entre sections -->
 <section class="bg-gray-900 py-10 mt-16 border-t border-gray-800">
   <div class="max-w-6xl mx-auto px-4">
@@ -242,12 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="p-2">Projets</div>
       </a>
 
-      <!-- Galerie -->
-      <a href="hobbies.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-        <img src="img/galerie.png" alt="Galerie" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
-        <div class="p-2">Galerie</div>
-      </a>
-
     </div>
   </div>
 </section>
@@ -263,11 +254,15 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="flex space-x-8">
       <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:text-blue-800 hover:underline transition">📧 Email</a>
       <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">🔗 LinkedIn</a>
+      <a href="cv_nathan_ochem.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">📄 CV</a>
     </div>
   </div>
-</footer>
-</section>
 
+  <!-- Aperçu intégré du CV -->
+  <div class="max-w-4xl mx-auto mt-6 px-4">
+    <iframe src="cv_nathan_ochem.pdf" class="w-full h-96 border rounded-lg shadow-md"></iframe>
+  </div>
+</footer>
 
 <script>
   const burgerBtn = document.getElementById('burgerBtn');

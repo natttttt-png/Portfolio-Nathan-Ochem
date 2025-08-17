@@ -81,8 +81,7 @@
       <a href="index.html" class="hover:text-blue-600 transition-colors duration-200">Accueil</a>
       <a href="education.html" class="hover:text-blue-600 transition-colors duration-200">Éducation</a>
       <a href="projects.html" class="hover:text-blue-600 transition-colors duration-200">Projets</a>
-      <a href="hobbies.html" class="hover:text-blue-600 transition-colors duration-200">Galerie</a>
-      <a href="experiences-en.html" class="text-blue-600 hover:underline">🇬🇧</a>
+       <a href="experiences-en.html" class="text-blue-600 hover:underline">🇬🇧</a>
     </nav>
     <button id="burgerBtn" class="md:hidden focus:outline-none text-gray-700 hover:text-blue-600 transition-colors duration-200" aria-label="Menu">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
@@ -94,8 +93,7 @@
     <a href="index.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Accueil</a>
     <a href="education.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Éducation</a>
     <a href="projects.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Projets</a>
-    <a href="hobbies.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Galerie</a>
-    <a href="experiences-en.html" class="block py-3 text-blue-600 hover:underline">🇬🇧</a>
+     <a href="experiences-en.html" class="block py-3 text-blue-600 hover:underline">🇬🇧</a>
   </div>
 </header>
 
@@ -271,12 +269,6 @@
           <div class="p-2">Projets</div>
         </a>
 
-        <!-- Gallery -->
-        <a href="hobbies-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-          <img src="img/galerie.png" alt="Gallery" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-2">Galerie</div>
-        </a>
-
       </div>
     </div>
   </section>
@@ -286,15 +278,21 @@
 
 
   <!-- FOOTER -->
-  <footer class="bg-white border-t mt-16 py-6 text-center text-sm text-gray-600">
-    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
-      <p class="text-gray-500">© 2025 Nathan Ochem</p>
-      <div class="flex space-x-6">
-        <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:underline hover:text-blue-800 transition">📧 Email</a>
-        <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:underline hover:text-blue-800 transition">🔗 LinkedIn</a>
-      </div>
+<footer class="bg-white border-t mt-24 py-8 text-center text-sm text-gray-500 font-light tracking-wide">
+  <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
+    <p>© 2025 Nathan Ochem</p>
+    <div class="flex space-x-8">
+      <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:text-blue-800 hover:underline transition">📧 Email</a>
+      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">🔗 LinkedIn</a>
+      <a href="cv_nathan_ochem.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">📄 CV</a>
     </div>
-  </footer>
+  </div>
+
+  <!-- Aperçu intégré du CV -->
+  <div class="max-w-4xl mx-auto mt-6 px-4">
+    <iframe src="cv_nathan_ochem.pdf" class="w-full h-96 border rounded-lg shadow-md"></iframe>
+  </div>
+</footer>
 
   <script>
     const burgerBtn = document.getElementById('burgerBtn');

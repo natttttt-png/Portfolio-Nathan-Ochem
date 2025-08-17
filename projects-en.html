@@ -4,741 +4,634 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects - Nathan Ochem</title>
+
+  <!-- Fonts & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Your CSS (adjust path if needed) -->
+  <link href="css/apple-style.css" rel="stylesheet" />
+
+  <!-- Icons -->
   <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.js"></script>
+
+  <!-- Enable JS class to avoid blank-on-load -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <style>
+    html, body {
+      font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+      background: #f6f6f7;
+      color: #232326;
+    }
+
+    /* No-JS fallback: visible immediately */
+    .fade-in { opacity: 1; transform: none; }
+    /* With JS: progressive reveal */
+    .js .fade-in { opacity: 0; transform: translateY(6px); transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1); }
+    .js .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .apple-card {
+      background: #fff;
+      border-radius: 2.3rem;
+      box-shadow: 0 8px 32px 0 rgba(32,32,37,.09), 0 2px 10px 0 rgba(60,60,67,.05);
+      padding: 2.8rem 2rem 2.2rem 2rem;
+      margin-bottom: 2.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      text-align: left;
+      border: 1px solid #ececec;
+    }
+
+    h1, h2, h3 { color: #18181b; }
+    h1 { font-size: 2.6rem; font-weight: 800; text-align:center; margin-bottom: 2.5rem; letter-spacing: -1.5px;}
+    h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 1.3rem;}
+    h3 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem;}
+    p, li { font-size: 1.09rem; line-height: 1.67;}
+    ul, ol { margin-left: 1.5rem;}
+    img, video { border-radius: 1.1rem; }
+
+    /* Sidebar overlay & panel (same pattern as FR page) */
+    #sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(38, 38, 43, 0.14);
+      z-index: 60;
+      transition: background 0.2s;
+    }
+    #sidebar-overlay.active { display: block; }
+    #sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      width: 290px;
+      max-width: 90vw;
+      background: #fff;
+      box-shadow: 0 8px 32px 0 rgba(32,32,37,.13);
+      border-right: 1px solid #ededed;
+      transform: translateX(-100%);
+      transition: transform .33s cubic-bezier(.41,0,.2,1);
+      z-index: 70;
+      padding: 2.1rem 1.5rem 1.5rem 1.5rem;
+      display: flex; flex-direction: column;
+    }
+    #sidebar.open { transform: translateX(0); }
+    #sidebar h3 { color: #18181b; font-size: 1.11rem; font-weight: 700; margin-bottom: 1.2rem; }
+    #sidebar ul { margin:0; padding:0;}
+    #sidebar li { list-style: none; margin-bottom: .5rem;}
+    #sidebar a {
+      display: block; color: #18181b;
+      font-size: 1.09rem; font-weight: 500;
+      border-radius: 10px;
+      padding: 0.54em 1.1em;
+      transition: background .15s;
+      text-decoration: none;
+    }
+    #sidebar a:hover, #sidebar a.active {
+      background: #f3f3f7;
+      color: #0f0f10;
+      text-decoration: underline;
+    }
+    #sidebar .sidebar-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: transparent; border: none; font-size: 2rem; color: #232326; cursor: pointer;
+      z-index: 10; transition: color .15s;
+    }
+    #sidebar .sidebar-close:hover { color: #ae1523;}
+
+    /* Sidebar toggle button */
+    #sidebarToggle {
+      position: fixed;
+      top: 1.1rem; left: 1.1rem;
+      background: rgba(255,255,255,0.90);
+      border: 1px solid #e3e3e7;
+      color: #222;
+      font-size: 1.07rem;
+      border-radius: 13px;
+      padding: 0.43em 0.87em 0.43em 0.82em;
+      cursor: pointer;
+      z-index: 90;
+      font-weight: 500;
+      box-shadow: 0 1px 7px 0 rgba(45,45,55,.08);
+      display: flex; align-items: center; gap: 0.65em;
+      opacity: 0.92;
+    }
+    #sidebarToggle i { width: 1.1em; height: 1.1em; }
+    #sidebarToggle:hover {
+      background: #f3f3f8;
+      border-color: #bdbdbd;
+      color: #18181b;
+      opacity: 1;
+      box-shadow: 0 4px 18px 0 rgba(30,30,35,0.12);
+    }
+
+    @media (max-width:640px) {
+      .apple-card { padding: 1.3rem 0.7rem; border-radius: 1.2rem;}
+      h1 { font-size: 2rem;}
+      h2 { font-size: 1.17rem;}
+      h3 { font-size: 1.02rem;}
+    }
+    @media (max-width:700px) {
+      #sidebar { width: 84vw; padding-left:1.1rem;}
+      #sidebarToggle { top:0.5rem; left:0.30rem; padding: 0.29em 0.61em;}
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-white to-purple-100 text-gray-900 font-sans min-h-screen">
+<body>
 
   <!-- Header -->
-  <header class="bg-white shadow sticky top-0 z-10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index-en.html" class="flex items-center space-x-2">
-        <img src="img/Logonathanochem.png" alt="Nathan Ochem Logo" class="h-8 w-8" />
-        <span class="text-xl font-bold text-black-800">Nathan Ochem</span>
+  <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm py-4 px-4">
+    <div class="max-w-5xl mx-auto flex justify-between items-center">
+      <a href="index-en.html" class="flex items-center space-x-2 select-none">
+        <img src="img/Logonathanochem.png" alt="Nathan Ochem Logo" class="h-10 w-10" />
+        <span class="font-semibold text-lg tracking-tight">Nathan Ochem</span>
       </a>
-      <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
-        <a href="index-en.html" class="hover:text-purple-600">Home</a>
-        <a href="experiences-en.html" class="hover:text-purple-600">Experiences</a>
-        <a href="education-en.html" class="hover:text-purple-600">Education</a>
-        <a href="hobbies-en.html" class="hover:text-purple-600">Gallery</a>
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="index-en.html" class="hover:underline">Home</a>
+        <a href="experiences-en.html" class="hover:underline">Experiences</a>
+        <a href="education-en.html" class="hover:underline">Education</a>
         <a href="projects.html" class="text-sm text-blue-600 hover:underline">🇫🇷</a>
       </nav>
-    </div>
-
-          <button id="burgerBtn" class="md:hidden focus:outline-none" aria-label="Menu">
-        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <button id="burgerBtn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-
-        <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 bg-white border-t text-sm font-medium text-gray-700">
-        <a href="index-en.html" class="hover:text-purple-600">Home</a>
-        <a href="experiences-en.html" class="hover:text-purple-600">Experiences</a>
-        <a href="education-en.html" class="hover:text-purple-600">Education</a>
-        <a href="hobbies-en.html" class="hover:text-purple-600">Gallery</a>
-        <a href="projects.html" class="text-sm text-blue-600 hover:underline">🇫🇷</a>
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 bg-white border-t border-gray-200 text-sm font-semibold text-gray-700">
+      <a href="index-en.html" class="block py-3 hover:underline">Home</a>
+      <a href="experiences-en.html" class="block py-3 hover:underline">Experiences</a>
+      <a href="education-en.html" class="block py-3 hover:underline">Education</a>
+      <a href="projects.html" class="block py-3 text-blue-600">🇫🇷</a>
     </div>
   </header>
 
-  <!-- Toggle button for sidebar -->
-  <button id="toggleSidebar"
-          class="fixed top-20 left-2 z-50 bg-purple-600 text-white px-3 py-2 rounded-md shadow hover:bg-purple-700 transition">
-    Projects Menu
+  <!-- Sidebar toggle & overlay -->
+  <button id="sidebarToggle" aria-label="Open projects menu">
+    <i data-feather="menu"></i>
   </button>
+  <div id="sidebar-overlay"></div>
 
-  <!-- Collapsible Sidebar -->
-  <aside id="sidebarProjects"
-         class="fixed top-16 left-0 h-full w-64 bg-white border-r border-gray-200 shadow transform -translate-x-full transition-transform duration-300 z-40">
-    <div class="px-4 pt-6">
-      <h3 class="text-lg font-semibold text-purple-800 mb-4">Projects</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#projet-cible-rugby" class="block text-blue-600 hover:underline">Rugby Target</a></li>
-        <li><a href="#projet-prothese" class="block text-blue-600 hover:underline">Prosthesis</a></li>
-        <li><a href="#projet-ctes" class="block text-blue-600 hover:underline">Ecological Transition</a></li>
-        <li><a href="#projet-couteau" class="block text-blue-600 hover:underline">Electric Knife</a></li>
-        <li><a href="#projet-langue" class="block text-blue-600 hover:underline">Language Project</a></li>
-        <li><a href="#projet-robot" class="block text-blue-600 hover:underline">Senior Year Robot</a></li>
+  <!-- Sidebar -->
+  <nav id="sidebar" aria-label="Projects Menu">
+    <button class="sidebar-close" aria-label="Close menu"><i data-feather="x"></i></button>
+    <h3>Projects</h3>
+    <ul>
+      <li><a href="#project-rugby">Rugby Target</a></li>
+      <li><a href="#project-prosthesis">Prosthesis</a></li>
+      <li><a href="#project-ctes">Ecological Transition</a></li>
+      <li><a href="#project-knife">Electric Knife</a></li>
+      <li><a href="#project-language">English Board Game</a></li>
+      <li><a href="#project-robot">Checkerboard Robot</a></li>
+    </ul>
+  </nav>
 
+  <!-- Content -->
+  <main class="pt-14 pb-10 px-3 fade-in" id="mainContent">
+    <h1 class="text-4xl font-extrabold text-center mb-10">My Projects</h1>
+
+    <!-- ==== Rugby Target : Carousel-like row ==== -->
+    <section id="project-rugby" class="apple-card fade-in">
+      <h2>Rugby Target Project</h2>
+
+      <h3>Context & Goal</h3>
+      <p>In partnership with Stade Rochelais, the goal was to design a simulation device to optimize lineout training by faithfully replicating players’ movements and dynamics.</p>
+
+      <div class="overflow-x-auto flex gap-8 py-2 mb-7" style="scroll-snap-type:x mandatory;">
+        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/vue de face.png" alt="Front view" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Front view</p>
+        </div>
+        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/vue de droite.png" alt="Right view" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Right view</p>
+        </div>
+        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/vue iso.png" alt="Isometric view" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Isometric view</p>
+        </div>
+      </div>
+
+      <h3>Objectives</h3>
+      <ul>
+        <li>Replicate hookers’ movements during lineouts</li>
+        <li>Provide real-time feedback on throw accuracy</li>
+        <li>Improve players’ responsiveness</li>
+        <li>Diversify players’ strategies</li>
       </ul>
-    </div>
-  </aside>
 
-  <!-- Main content -->
-  <main id="mainContent" class="transition-all duration-300 ml-0">
-    <div class="bg-white p-8 rounded-3xl shadow-lg max-w-4xl mx-auto mt-16">
-      <h1 class="text-4xl font-extrabold mb-8 text-center text-purple-800">My Projects</h1>
-  
-<!-- RUGBY TARGET PROJECT -->
+      <h3>My Role</h3>
+      <ul>
+        <li>Horizontal motion of the target: from design to sizing</li>
+        <li>Component selection: rails, rollers, fasteners</li>
+        <li>Sizing of rollers, fixing screws, and transmission belt</li>
+      </ul>
 
-<section id="projet-cible-rugby" class="bg-white rounded-xl shadow-lg p-6 mb-12 border border-grey-100">
-  <section id="projet-cible-rugby" class="bg-grey-50 rounded-2xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold mb-4 text-grey-800">Rugby Target Project</h2>
+      <h3>Methodology</h3>
+      <ol>
+        <li>Client discussions to clarify needs</li>
+        <li>Survey of existing solutions and limitations</li>
+        <li>Brainstorming, comparative decision table</li>
+        <li>Calculations and 3D modeling in CATIA V6</li>
+      </ol>
 
-    <!-- Context -->
+      <h3>Technologies & Tools</h3>
+      <p><strong>Sizing:</strong> Supplier datasheets, strength of materials calculations.<br>
+         <strong>Software:</strong> CATIA V6, Excel, Word.</p>
 
-    <h3 class="text-xl font-semibold mb-2">Context and Objective</h3>
-    <p class="text-gray-700 mb-6">
-      In partnership with Stade Rochelais, the goal was to design a simulation device 
-      to optimize lineout training by faithfully replicating players’ movements and dynamics.
-    </p>
+      <h3>Lessons Learned</h3>
+      <p>Deeper project management, mechanical sizing, and teamwork across disciplines.</p>
+    </section>
 
-    <!-- Illustration space -->
-    <div class="mb-6 space-y-4">
+    <!-- ==== Prosthesis : Alternating stacked ==== -->
+    <section id="project-prosthesis" class="apple-card fade-in">
+      <h2>Prosthesis Project for Post-Cubital Amputees</h2>
 
-      <!-- Front view -->
-      <div>
-        <img src="img/vue de face.png" 
-             alt="CAD diagram of the target - front view" 
-             class="w-full max-w-3xl mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">
-          CAD diagram of the target mechanism – front view
-        </p>
+      <h3>Context & Goal</h3>
+      <p>At the request of an occupational therapist, we designed a forearm prosthesis intended for cycling—adjustable and adaptable to different patients, to facilitate rehabilitation.</p>
+
+      <div class="flex flex-col gap-8 mb-7">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="img/Pinnov plans.png" alt="Functional plan" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Initial functional plans to capture constraints.</p>
+        </div>
+        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+          <img src="img/Pinnov Iso.png" alt="3D model" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-right mt-3 md:mt-0">3D modeling in CATIA.</p>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="img/IMG_6586.JPG" alt="Final prosthesis" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Final manufactured prosthesis.</p>
+        </div>
       </div>
 
-      <!-- Right view -->
-      <div>
-        <img src="img/vue de droite.png" 
-             alt="CAD diagram of the target - right view" 
-             class="w-full max-w-3xl max-h-64 mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">
-          CAD diagram of the target mechanism – right view
-        </p>
+      <h3>Objectives</h3>
+      <ul>
+        <li>Length-adjustable, multi-patient adaptability</li>
+        <li>Secure attachment to the bike and forearm</li>
+        <li>Safety in case of fall, easy detachment</li>
+        <li>Balance, stability, modularity</li>
+      </ul>
+
+      <h3>My Role</h3>
+      <ul>
+        <li>Design of the bike/forearm link system</li>
+        <li>Functional sketches, CATIA modeling, manufacturing drawings</li>
+        <li>Geometry optimization, mechanical integration with team</li>
+      </ul>
+
+      <h3>Methodology</h3>
+      <ol>
+        <li>Client exchanges, survey of existing solutions</li>
+        <li>Decision matrix, calculations, CAD, drawings</li>
+        <li>Fabrication: 3D printing, machining</li>
+      </ol>
+
+      <h3>Technologies & Tools</h3>
+      <p><strong>Software:</strong> CATIA V6, Excel, Word.<br>
+         <strong>Machines:</strong> Lathe, milling machine, 3D printer.<br>
+         <strong>Sizing:</strong> Strength of materials, simulations.</p>
+
+      <h3>Lessons Learned</h3>
+      <p>Project management, advanced CAD, assisted fabrication, collaborative work.</p>
+    </section>
+
+    <!-- ==== CTES : Carousel-like row ==== -->
+    <section id="project-ctes" class="apple-card fade-in">
+      <h2>Ecological and Societal Transition Challenge</h2>
+
+      <h3>Context & Stakes</h3>
+      <p>Team project: making heavy trucks more ecological via electric supply using highway catenaries (pantograph system).</p>
+
+      <div class="overflow-x-auto flex gap-8 py-2 mb-7" style="scroll-snap-type:x mandatory;">
+        <div class="flex flex-col items-center w-72 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/JUVR8807.JPG" alt="Prototype - top view" class="object-contain rounded shadow w-full h-48 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Prototype – top view</p>
+        </div>
+        <div class="flex flex-col items-center w-72 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/MDSY6569.JPG" alt="Prototype - bottom view" class="object-contain rounded shadow w-full h-48 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Prototype – bottom view</p>
+        </div>
       </div>
 
-      <!-- Isometric view -->
-      <div>
-        <img src="img/vue iso.png" 
-             alt="CAD diagram of the target - isometric view" 
-             class="w-full max-w-3xl mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">
-          CAD diagram of the target mechanism – isometric view
-        </p>
+      <h3>Objectives</h3>
+      <ul>
+        <li>Reduce pollutant emissions of heavy transport</li>
+        <li>Design an energy capture prototype</li>
+        <li>Assess feasibility and environmental impact</li>
+      </ul>
+
+      <h3>My Role</h3>
+      <ul>
+        <li>Design & fabrication of the laser-cut wooden mock-up</li>
+        <li>Re-use of salvaged components</li>
+        <li>Presentation & multi-disciplinary restitution</li>
+      </ul>
+
+      <h3>Methodology</h3>
+      <ol>
+        <li>Brainstorming on transport solutions</li>
+        <li>Technical & environmental evaluation</li>
+        <li>Low-cost physical mock-up</li>
+      </ol>
+
+      <h3>Technologies & Tools</h3>
+      <p><strong>Machines:</strong> Laser cutter, multimeter, salvaged components.<br>
+         <strong>Software:</strong> Canva, PowerPoint, spreadsheets.</p>
+
+      <h3>Lessons Learned</h3>
+      <p>First eco-design approach; importance of communication and cross-disciplinary management.</p>
+    </section>
+
+    <!-- ==== Electric Knife : Alternating stacked ==== -->
+    <section id="project-knife" class="apple-card fade-in">
+      <h2>Electric Knife Project</h2>
+
+      <h3>Context & Stakes</h3>
+      <p>Complete mechanical study and modeling of a domestic electric knife. Kinematic analysis, transformation of motor rotation into blade reciprocation, and 3D visualization.</p>
+
+      <div class="flex flex-col gap-8 mb-7">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="img/couteau réel.png" alt="Real electric knife" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Starting point: disassembly and observation of parts.</p>
+        </div>
+        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+          <img src="img/modelisation 3D.png" alt="3D modeling" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-right mt-3 md:mt-0">Reconstructed mechanism modeled in Creo Parametric.</p>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="img/element-couteau.png" alt="Modeled mechanism" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Modeled internal mechanical system.</p>
+        </div>
       </div>
 
-    </div>
+      <h3>Objectives</h3>
+      <ul>
+        <li>Model parts in Creo Parametric</li>
+        <li>Analyze kinematic operation</li>
+        <li>Illustrate the system with an animation</li>
+      </ul>
 
-    <!-- Objectives -->
-    <h3 class="text-xl font-semibold mb-2">Objectives</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>Replicate hookers’ movements during lineouts</li>
-      <li>Provide real-time feedback on throw accuracy</li>
-      <li>Improve players’ responsiveness</li>
-      <li>Diversify players’ strategies</li>
-    </ul>
+      <h3>My Role</h3>
+      <ul>
+        <li>Kinematic analysis and complete modeling</li>
+        <li>Mechanism animation in Creo</li>
+      </ul>
 
-    <!-- My role -->
-    <h3 class="text-xl font-semibold mb-2">My Role</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-      <li>I was in charge of the horizontal movement of the target, from design to sizing.</li>
-      <li>I designed the translation system by selecting the mechanical components ensuring carriage guidance and support (rails, rollers, fasteners).</li>
-      <li>The sizing focused on:
-        <ul class="list-disc list-inside ml-4 space-y-1">
-          <li>the guide rollers for smooth translation;</li>
-          <li>the fastening screws, adapted to the load and the vertical arrangement of the rail;</li>
-          <li>the transmission belt and its anchors, sized to withstand the high acceleration of the carriage.</li>
-        </ul>
-      </li>
-    </ul>
+      <h3>Methodology</h3>
+      <ol>
+        <li>Disassembly, component identification</li>
+        <li>Link analysis, precise measurements</li>
+        <li>3D modeling, animation, validation</li>
+      </ol>
 
-    <!-- Methodology -->
-    <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-1">
-      <li>Discussed with the client to clearly understand their needs.</li>
-      <li>Researched existing solutions and analyzed their limitations.</li>
-      <li>Brainstorming phase with sketches and ideas inspired by real examples.</li>
-      <li>Selected the best solution using a comparative table.</li>
-      <li>Performed calculations to ensure the parts would hold mechanically.</li>
-      <li>3D modeled the final system using CATIA V6 software.</li>
-    </ol>
+      <video controls loop muted playsinline class="w-full max-w-3xl mx-auto rounded shadow">
+        <source src="videos/Video mecanisme.mp4" type="video/mp4" />
+        <source src="videos/Video mecanisme.mp4" type="video/webm" />
+        Knife kinematics animation.
+      </video>
 
-    <!-- Technologies -->
-    <h3 class="text-xl font-semibold mb-2">Technologies & Tools</h3>
-    <p class="text-gray-700 mb-6">
-      <strong>Sizing:</strong> Supplier datasheets, strength of materials calculations<br />
-      <strong>Software used:</strong> CATIA V6 (3D modeling), Excel (calculation tables), Word (technical documentation)
-    </p>
+      <h3>Technologies & Tools</h3>
+      <p><strong>Software:</strong> Creo Parametric.<br>
+         <strong>Tools:</strong> Caliper, ruler.<br>
+         <strong>Hardware:</strong> Real device analyzed.</p>
 
-    <!-- Lessons learned -->
-    <h3 class="text-xl font-semibold mb-2">Lessons Learned</h3>
-    <p class="text-gray-700">
-      This project allowed me to deepen my skills in project management, mechanical sizing, and CAD design.
-      It also taught me to collaborate effectively within a multidisciplinary team and maintain consistent rigor throughout the development process.
-    </p>
-  </section>
-</section>
+      <h3>Lessons Learned</h3>
+      <p>Mastery of 3D modeling, kinematic analysis, animation, and teamwork.</p>
+    </section>
 
-<!-- PROSTHESIS PROJECT -->
+    <!-- ==== English Board Game : Carousel-like row ==== -->
+    <section id="project-language" class="apple-card fade-in">
+      <h2>English Project / F1 Board Game</h2>
 
-<section id="projet-prothese" class="bg-white rounded-xl shadow-lg p-6 mb-12 border border-purple-100">
-  <section id="projet-prothese" class="bg-grey-50 rounded-2xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold mb-4 text-grey-800">Prosthesis Project for Post-Cubital Amputees</h2>
+      <h3>Context & Stakes</h3>
+      <p>Team language project: creation of a Formula 1 board game inspired by Trivial Pursuit (design, rules, physical build, playable in class).</p>
 
-    <!-- Context -->
-
-    <h3 class="text-xl font-semibold mb-2">Context and Objective</h3>
-    <p class="text-gray-700 mb-6">
-      At the request of an occupational therapist, we were asked to design a forearm prosthesis intended for cycling.
-      The objective was to develop a length- and width-adjustable solution, so that a single device could be adapted to 
-      several amputee patients, thereby facilitating rehabilitation sessions.
-    </p>
-
-    <!-- Illustration space -->
-    <div class="mb-6 space-y-4">
-
-      <!-- Image 1: Isometric view -->
-      <div>
-        <img src="img/Pinnov Iso.png" 
-             alt="Isometric CAD diagram of the prosthesis" 
-             class="w-full max-w-3xl mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">
-          CAD diagram of the prosthesis – isometric view
-        </p>
+      <div class="overflow-x-auto flex gap-8 py-2 mb-7" style="scroll-snap-type:x mandatory;">
+        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/question facile.png" alt="Easy card" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Easy</p>
+        </div>
+        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/question medium.png" alt="Medium card" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Medium</p>
+        </div>
+        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
+          <img src="img/question dure.png" alt="Hard card" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
+          <p class="text-xs text-gray-500 text-center mt-2">Hard</p>
+        </div>
       </div>
 
-      <!-- Image 2: Side view / Plan -->
-      <div>
-        <img src="img/Pinnov plans.png" 
-             alt="Plan of the prosthesis - side view" 
-             class="w-full max-w-3xl max-h-64 mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">
-          Plan of the prosthesis – side view
-        </p>
+      <h3>Objectives</h3>
+      <ul>
+        <li>Create an original game</li>
+        <li>Improve English through a fun project</li>
+        <li>Build a fully playable game</li>
+      </ul>
+
+      <h3>My Role</h3>
+      <ul>
+        <li>Defined the medium and rules</li>
+        <li>Wrote and classified questions</li>
+      </ul>
+
+      <h3>Methodology</h3>
+      <ol>
+        <li>Choose the medium</li>
+        <li>Rules, questions, printing, 3D pawns</li>
+      </ol>
+
+      <h3>Technologies & Tools</h3>
+      <p><strong>Machines:</strong> 3D printer, regular printer, laminator.<br>
+         <strong>Software:</strong> 3D printing software, Canva.</p>
+
+      <h3>Lessons Learned</h3>
+      <p>Teamwork, communication, rigor, creativity, pedagogy.</p>
+    </section>
+
+    <!-- ==== Checkerboard Robot : Alternating stacked ==== -->
+    <section id="project-robot" class="apple-card fade-in">
+      <h2>Checkerboard Robot Project</h2>
+
+      <h3>Context & Stakes</h3>
+      <p>Team of 4: autonomous robot moving on a chessboard, grabbing and returning an object while avoiding obstacles. Programming, design, modeling, tests.</p>
+
+      <div class="flex flex-col gap-8 mb-7">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="img/damier.png" alt="Checkerboard" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Board with mission zones and obstacles.</p>
+        </div>
+        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+          <img src="img/Vue 3-4 arrière.png" alt="Rear 3/4 robot view" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-right mt-3 md:mt-0">Rear 3/4 view of the model.</p>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="img/Vue bas.png" alt="Bottom robot view" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
+          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Bottom view with sensor placement.</p>
+        </div>
       </div>
 
-    </div>
-
-    <!-- Objectives -->
-    <h3 class="text-xl font-semibold mb-2">Objectives</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>Provide a length-adjustable prosthesis adaptable to different forearm shapes</li>
-      <li>Ensure a secure and firm attachment to both the bike and the amputated limb</li>
-      <li>Offer a safe mechanism in case of a fall</li>
-      <li>Ensure good balance thanks to appropriate size and weight</li>
-      <li>Enable easy detachment with potential modularity for future upgrades</li>
-    </ul>
-
-    <!-- My role -->
-    <h3 class="text-xl font-semibold mb-2">My Role</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-      <li>Responsible for designing the connection system between the bike attachment and the forearm support, considering safety, comfort, and modularity constraints.</li>
-      <li>Produced functional sketches, selected the final technical solution, created 3D models with CATIA V6, and made detailed plans for manufacturing.</li>
-      <li>Optimized the geometry to ensure the device's stability and mass balance during use.</li>
-      <li>Worked closely with team members to ensure mechanical integration of the prosthesis components.</li>
-    </ul>
-
-    <!-- Methodology -->
-    <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-1">
-      <li>Discussed with the client to understand their needs.</li>
-      <li>Researched existing solutions and analyzed their limitations.</li>
-      <li>Brainstorming phase with sketches and inspiration from real-life examples.</li>
-      <li>Selected the best solution using a decision matrix.</li>
-      <li>Performed calculations to ensure mechanical resistance and compliance with weight and wrist modularity constraints.</li>
-      <li>3D modeled the final system using CATIA V6 software.</li>
-      <li>Created functional drawings with dimensioning and CAM preparation for on-site fabrication.</li>
-      <li>Manufactured mechanical parts using 3D printing, 3- and 5-axis lathes, and milling machines.</li>
-      <div>
-        <img src="img/IMG_6586.JPG" 
-             alt="Final result prosthesis" 
-             class="w-full max-w-3xl mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">
-          Final prosthesis result
-        </p>
-      </div>
-    </ol>
-
-    <!-- Technologies -->
-    <h3 class="text-xl font-semibold mb-2">Technologies & Tools</h3>
-    <p class="text-gray-700 mb-6">
-      <strong>Sizing:</strong> Strength of materials calculations, manual detachment simulations to verify safety in case of fall<br />
-      <strong>Software used:</strong> CATIA V6 (3D modeling), Excel (sizing calculations), Word (technical documentation)<br />
-      <strong>Machines used:</strong> 3-axis lathe, milling machine, 3D printer, manual lathe.<br />
-    </p>
-
-    <!-- Lessons learned -->
-    <h3 class="text-xl font-semibold mb-2">Lessons Learned</h3>
-    <p class="text-gray-700">
-      This project strengthened my skills in project management, CAD design, and computer-aided manufacturing (CAM). 
-      I also enhanced my ability to collaborate effectively within a team and to maintain rigor throughout the development process.
-    </p>
-  </section>
-</section>
-
-<!-- PROJECT CTES -->
-
-<section id="projet-ctes" class="bg-white rounded-xl shadow-lg p-6 mb-12 border border-purple-100">
-  <section id="projet-ctes" class="bg-grey-50 rounded-2xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold mb-4 text-grey-800">Ecological and Societal Transition Challenge</h2>
-
-    <!-- Context -->
-
-    <h3 class="text-xl font-semibold mb-2">Context and Stakes</h3>
-    <p class="text-gray-700 mb-6">
-      At the beginning of the first year of the engineering cycle, as part of a project aimed at raising awareness of current climate issues, 
-      we were led to reflect on our role as engineers in facing the challenges of ecological transition. The project was carried out in a team 
-      of seven students from diverse fields:
-    </p>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>2 in Mechanical Engineering</li>
-      <li>2 in Civil Engineering</li>
-      <li>1 in Biological and Food Engineering</li>
-      <li>1 in Embedded Systems</li>
-      <li>1 in Computer Science and Statistics</li>
-    </ul>
-    <p class="text-gray-700 mb-6">
-      The project’s goal was to rethink our lifestyles, particularly regarding mobility.
-      We proposed a solution to make heavy trucks more ecological by equipping their cabins with pantographs to capture electricity 
-      via overhead catenaries installed above highways. This approach would enable 100% electric propulsion without relying on bulky batteries, 
-      optimizing the space at the back of the cabin to integrate the system.
-    </p>
-
-    <!-- Objectives -->
-    <h3 class="text-xl font-semibold mb-2">Objectives</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>Imagine an innovative solution aiming to significantly reduce pollutant emissions from heavy trucks by rethinking their power supply.</li>
-      <li>Design a functional prototype illustrating the chosen technical principle, particularly the energy capture system via highway catenaries.</li>
-      <li>Develop a comprehensive dossier including technical plans, a feasibility study, deployment cost estimates, and a medium- and long-term environmental assessment.</li>
-    </ul>
-
-    <!-- My role -->
-    <h3 class="text-xl font-semibold mb-2">My Role</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-      <li>Responsible for designing the functional prototype, collaborating with a peer specialized in Civil Engineering.</li>
-      <li>Designed and fabricated a wooden scale model using laser cutting to minimize costs and facilitate rapid assembly.</li>
-      <li>Reused components from recovered materials to strengthen the project's sustainability and illustrate the system's overall operation.</li>
-    </ul>
-
-    <!-- Methodology -->
-    <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-1">
-      <li>Team brainstorming phase to identify an innovative solution related to transportation and reducing its environmental impact.</li>
-      <li>Initial evaluation of the project’s environmental and technical feasibility, including a preliminary life cycle assessment.</li>
-      <li>Design and manufacture of a physical scale model from available and recycled materials, aiming at cost minimization.</li>
-    </ol>
-
-    <!-- Technologies -->
-    <h3 class="text-xl font-semibold mb-2">Technologies & Tools</h3>
-    <p class="text-gray-700 mb-6">
-      <strong>Machines used:</strong> laser cutter for model fabrication, electrical measurement instruments for testing the electric motor’s operation.<br/>
-      <strong>Materials:</strong> wood, recovered components (small mechanical parts, mounting supports).<br/>
-      <strong>Digital tools:</strong> presentation software (PowerPoint/Canva) for the report, spreadsheets for simplified environmental analysis.
-    </p>
-
-    <!-- Illustration space -->
-    <div class="mb-6 space-y-8">
-      <!-- Top view -->
-      <div>
-        <img src="img/JUVR8807.JPG" alt="Prototype - top view"
-             class="w-full max-w-3xl mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2 italic">Prototype – top view</p>
-      </div>
-
-      <!-- Bottom view -->
-      <div>
-        <img src="img/MDSY6569.JPG" alt="Prototype - bottom view"
-             class="w-full max-w-3xl mx-auto object-contain rounded shadow max-h-96" />
-        <p class="text-sm text-gray-500 text-center mt-2 italic">Prototype – bottom view</p>
-      </div>
-    </div>
-
-    <!-- Lessons learned -->
-    <h3 class="text-xl font-semibold mb-2">Lessons Learned</h3>
-    <p class="text-gray-700">
-      This project helped me deepen my project management skills and offered a concrete first approach to issues related to eco-design and energy transition in transportation.<br />
-      I learned to collaborate within a multidisciplinary team, to confront and reconcile different technical viewpoints, and to adapt to material and time constraints.<br />
-      The project also raised my awareness of the importance of communication in showcasing a technical solution to a non-specialist audience, particularly through the creation of a representative physical model.
-    </p>
-
-  </section>
-</section>
-
-<!-- PROJECT Language -->
-
-<section id="projet-langue" class="bg-white rounded-xl shadow-lg p-6 mb-12 border border-purple-100">
-  <section id="projet-langue" class="bg-grey-50 rounded-2xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold mb-4 text-grey-800">English Project</h2>
-
-    <!-- Context -->
-
-    <h3 class="text-xl font-semibold mb-2">Context and Stakes</h3>
-    <p class="text-gray-700 mb-6">
-      During my final year of integrated preparatory studies, we had the opportunity to carry out a language project in a team of three.
-      We had the freedom to choose the topic as well as the medium.  
-      We therefore created a board game themed around Formula 1, inspired by Trivial Pursuit.  
-      We wrote the game rules, developed the questions and answers, as well as the game mechanics.  
-      Finally, we designed and physically manufactured the game, which is fully playable.
-    </p>
-
-    <!-- Objectives -->
-    <h3 class="text-xl font-semibold mb-2">Objectives</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>Create an original and freely designed board game</li>
-      <li>Improve English skills through a playful project</li>
-      <li>Design a game that is both fun and fully playable</li>
-    </ul>
-
-    <div class="mb-6 space-y-4">
-      <div>
-        <img src="img/question facile.png" alt="Easy question card" 
-             class="w-48 max-w-full mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">Easy question card</p>
-      </div>
-    </div>
-
-    <!-- My role -->
-    <h3 class="text-xl font-semibold mb-2">My Role</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-      <li>Participated in choosing the game medium</li>
-      <li>Responsible for developing the specific game rules</li>
-      <li>Collaborated in designing the questions, classified by difficulty level</li>
-    </ul>
-
-    <!-- Methodology -->
-    <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-1">
-      <li>Choice of game presentation medium</li>
-      <li>Development of general game rules</li>
-      <li>Writing questions and classification by difficulty level</li>
-      <li>Printing the cards and game board</li>
-      <li>3D printing the pawns based on a model found online</li>
-    </ol>
-
-    <div class="mb-6 space-y-4">
-      <div>
-        <img src="img/question medium.png" alt="Medium difficulty question card" 
-             class="w-48 max-w-full mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">Medium difficulty question card</p>
-      </div>
-    </div>
-
-    <!-- Technologies -->
-    <h3 class="text-xl font-semibold mb-2">Technologies & Tools</h3>
-    <p class="text-gray-700 mb-6">
-      <strong>Machines used:</strong> 3D printers, regular printer, laminator<br />
-      <strong>Software used:</strong> 3D printing software, Canva for creating cards and board
-    </p>
-
-    <div class="mb-6 space-y-4">
-      <div>
-        <img src="img/question dure.png" alt="Hard difficulty question card" 
-             class="w-48 max-w-full mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">Hard difficulty question card</p>
-      </div>
-    </div>
-
-    <!-- Lessons learned -->
-    <h3 class="text-xl font-semibold mb-2">Lessons Learned</h3>
-    <p class="text-gray-700">
-      This project allowed me to strengthen my skills in project management and teamwork.  
-      I also improved my communication skills, especially within a multidisciplinary project mixing creativity and pedagogy.  
-      Finally, this experience taught me the importance of rigor in writing rules and designing clear and accessible playful materials.
-    </p>
-
-  </section>
-</section>
-
-<!-- PROJECT Electric Knife -->
-
-<section id="projet-couteau" class="bg-white rounded-xl shadow-lg p-6 mb-12 border border-purple-100">
-  <section id="projet-couteau" class="bg-grey-50 rounded-2xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold mb-4 text-grey-800">Electric Knife Project</h2>
-
-    <div class="mb-6 space-y-4">
-      <div>
-        <img src="img/couteau réel.png" alt="Real knife image" 
-             class="w-full max-w-3xl max-h-64 mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">Electric knife to analyze</p>
-      </div>
-    </div>
-
-    <!-- Context -->
-
-    <h3 class="text-xl font-semibold mb-2">Context and Stakes</h3>
-    <p class="text-gray-700 mb-6">
-      The <strong>"electric knife"</strong> project, carried out during my second year of integrated preparatory studies, aimed to model and analyze the mechanical operation of a domestic electric knife.
-      <br><br>
-      Done in pairs, this project focused on the kinematic analysis of the linked parts, enabling us to understand and reproduce the cutting motion.
-      This modeling allowed us to identify key components, study their mechanical interactions, and deduce the motion laws governing the system.
-    </p>
-
-    <!-- Objectives -->
-
-    <h3 class="text-xl font-semibold mb-2">Objectives</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>Model the main parts of the electric knife using Creo Parametric software</li>
-      <li>Analyze the kinematic operation of the mechanism by identifying movements transmitted between parts</li>
-      <li>Understand how the motor's rotational motion is transformed into the blades' reciprocating movement</li>
-      <li>Illustrate overall operation through a 3D assembly and motion animations</li>
-    </ul>
-
-    <!-- My role -->
-
-    <h3 class="text-xl font-semibold mb-2">My Role</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-      <li>We jointly conducted the overall kinematic analysis to understand the movements generated by the mechanical links.</li>
-      <li>I then took charge of the complete 3D modeling of parts and the mechanism animation under Creo Parametric, to visually illustrate the knife's operation.</li>
-    </ul>
-
-    <div class="mb-6 space-y-4">
-      <div>
-        <img src="img/modelisation 3D.png" alt="Modeled knife image" 
-             class="w-full max-w-3xl max-h-64 mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">Electric knife modeled in Creo Parametric</p>
-      </div>
-    </div>
-
-    <div class="mb-6 space-y-4">
-      <div>
-        <img src="img/element-couteau.png" alt="Knife components" 
-             class="w-full max-w-3xl max-h-64 mx-auto object-contain rounded shadow" />
-        <p class="text-sm text-gray-500 text-center mt-2">Modeled mechanical system of the knife</p>
-      </div>
-    </div>
-
-    <!-- Methodology -->
-
-    <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-1">
-      <li>Dismantling the mechanical system to identify components and understand their roles.</li>
-      <li>Analyzing movements and links between parts to establish the overall kinematics.</li>
-      <li>Precise measurement of component dimensions using metrology tools.</li>
-      <li>3D modeling of parts in <strong>Creo Parametric</strong>, respecting the measured dimensions.</li>
-      <li>Animating the mechanism in the software to validate the coherence of the reconstructed motion.</li>
-      <li>Reassembling the original mechanical system once the study was completed.</li>
-    </ol>
-
-    <video controls loop muted autoplay playsinline class="w-full max-w-3xl mx-auto rounded shadow">
-      <source src="videos/Video mecanisme.mp4" type="video/mp4" />
-      <source src="videos/Video mecanisme.mp4" type="video/webm" />
-      Animation of the knife's kinematics.
-    </video>
-
-    <!-- Technologies -->
-
-    <h3 class="text-xl font-semibold mb-2">Technologies & Tools</h3>
-    <p class="text-gray-700 mb-6">
-      <strong>Software used:</strong> <span class="text-gray-800">Creo Parametric</span> — for 3D modeling of parts, system assembly, creating kinematic animations, and drafting.<br>
-      <strong>Measurement tools:</strong> <span class="text-gray-800">Caliper, ruler</span> — for taking precise dimensions of mechanical components.<br>
-      <strong>Equipment used:</strong> <span class="text-gray-800">Real mechanical system</span> — dismantled and analyzed to understand internal operation and links.
-    </p>
-
-    <!-- Lessons learned -->
-
-    <h3 class="text-xl font-semibold mb-2">Lessons Learned</h3>
-    <p class="text-gray-700">
-      This project enabled me to develop my skills in <strong>kinematic analysis</strong> of a real mechanical system.
-      <br><br>
-      I strengthened my mastery of <strong>Creo Parametric</strong>, especially in <strong>precise 3D modeling</strong> based on real measurements, and in creating animations to illustrate mechanism functioning.
-      <br><br>
-      Working in a pair also taught me how to <strong>collaborate effectively</strong> on modeling tasks, distribute work evenly, and <strong>communicate rigorously</strong> about technical constraints encountered.
-    </p>
-
-  </section>
-</section>
-
-<!-- PROJECT Robot -->
-
-<section id="projet-robot" class="bg-white rounded-xl shadow-lg p-6 mb-12 border border-purple-100">
-  <section id="projet-robot" class="bg-grey-50 rounded-2xl p-6 mb-8">
-    <h2 class="text-2xl font-semibold mb-4 text-grey-800">Checkerboard Robot Project</h2>
-
-    <!-- Context -->
-
-    <h3 class="text-xl font-semibold mb-2">Context and Stakes</h3>
-    <p class="text-gray-700 mb-6">
-      As part of this project carried out in pairs of four students, our goal was to fully design an autonomous robot.
-      The robot had to move on a chessboard from a defined starting position, navigate to a specific (pre-known) position to pick up a boat,
-      then return to its initial position while avoiding a statuette placed on its path.
-    </p>
-
-    <!-- Illustration -->
-
-    <div class="mb-8">
-      <div class="max-w-3xl mx-auto">
-        <img
-          src="img/damier.png"
-          alt="Checkerboard"
-          class="w-full h-auto object-contain rounded-lg shadow-md"
-        />
-        <p class="text-sm text-gray-600 text-center mt-4 leading-relaxed">
-          Checkerboard on which the robot must move.<br />
-          The blue area indicates the boat's position, as well as the initial position of the robot and statuette at <strong>P1</strong>.<br />
-          The red area indicates the boat's position, as well as the initial position of the robot and statuette at <strong>P2</strong>.
-        </p>
-      </div>
-    </div>
-
-    <!-- Objectives -->
-
-    <h3 class="text-xl font-semibold mb-2">Objectives</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-      <li>Develop a reliable hooking solution to tow the boat to the starting zone.</li>
-      <li>Program the robot's movement on the checkerboard following a predefined route.</li>
-      <li>Define the robot’s mode of movement as well as the choice, type, number, and placement of sensors used.</li>
-    </ul>
-
-    <!-- My Role -->
-
-    <h3 class="text-xl font-semibold mb-2">My Role</h3>
-    <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
-      <li>Collective participation in choosing components necessary for the robot's movement management.</li>
-      <li>Team definition of the boat hooking system following brainstorming.</li>
-      <li>Assembly of components according to the layout previously defined by the group using Creo Parametric.</li>
-    </ul>
-
-    <!-- Methodology -->
-
-    <h3 class="text-xl font-semibold mb-2">Methodology</h3>
-    <ol class="list-decimal list-inside text-gray-700 mb-6 space-y-1">
-      <li>Define the type of hooking and the global operating principle.</li>
-      <li>Theoretical design of the component layout in the available space using Creo Parametric.</li>
-      <li>Consideration of the robot's movement mode according to checkerboard constraints.</li>
-      <li>Assembly of the robot according to established technical choices.</li>
-      <li>Development of code for autonomous movement management on the checkerboard.</li>
-      <li>Testing, debugging, and adjustments phase to ensure reliable operation.</li>
-    </ol>
-
-    <!-- Rear 3/4 View -->
-
-    <div class="mb-12">
-      <div class="max-w-3xl mx-auto">
-        <img
-          src="img/Vue 3-4 arrière.png"
-          alt="Rear 3/4 view of the robot"
-          class="w-full h-auto object-contain rounded-lg shadow-md"
-        />
-        <p class="text-sm text-gray-600 text-center mt-4 leading-relaxed">
-          3/4 rear view modeling of the robot.
-        </p>
-      </div>
-    </div>
-
-    <!-- Bottom View -->
-
-    <div class="mb-12">
-      <div class="max-w-3xl mx-auto">
-        <img
-          src="img/Vue bas.png"
-          alt="Bottom view of the robot"
-          class="w-full h-auto object-contain rounded-lg shadow-md"
-        />
-        <p class="text-sm text-gray-600 text-center mt-4 leading-relaxed">
-          Bottom view modeling of the robot.
-        </p>
-      </div>
-    </div>
-
-    <!-- Technologies -->
-
-    <h3 class="text-xl font-semibold mb-2">Technologies & Tools</h3>
-    <p class="text-gray-700 mb-6">
-      <strong>Software:</strong> Visual Studio Code (code editor for embedded programming), free tools for component placement schematics.<br />
-      <strong>Hardware:</strong> Arduino microcontroller (or other depending on the project), ultrasonic sensors for obstacle detection and positioning,  
-      black and white infrared sensors for line or specific zone detection on the checkerboard, DC motors for propulsion,  
-      as well as various electronic components (resistors, wiring, breadboard, power supply).
-    </p>
-
-    <video controls loop muted autoplay playsinline class="w-full max-w-3xl mx-auto rounded shadow">
-      <source src="videos/video robot.mp4" type="video/mp4" />
-      Test of the robot in real conditions
-    </video>
-
-    <br /><br /><br />
-
-    <!-- Lessons Learned -->
-
-    <h3 class="text-xl font-semibold mb-2">Lessons Learned</h3>
-    <p class="text-gray-700">
-      This project enabled me to strengthen my skills in embedded programming and sensor integration for movement detection and control.  
-      I also learned to work in a multidisciplinary team, coordinate task distribution, and conduct thorough testing and debugging phases to ensure robot reliability.
-    </p>
-  </section>
-</section>
-
-    
-
-     <!-- Bouton retour -->
-    <div class="text-center mt-10">
-      <a href="education.html#top"
-         class="inline-block px-4 py-2 bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-700 transition">
-        Retour à l’éducation
+      <h3>Objectives</h3>
+      <ul>
+        <li>Develop a reliable hook to tow the object</li>
+        <li>Program autonomous path following</li>
+        <li>Optimize line/obstacle detection</li>
+      </ul>
+
+      <h3>My Role</h3>
+      <ul>
+        <li>Component choice, assembly, CAD</li>
+        <li>Code development & sensor integration</li>
+      </ul>
+
+      <h3>Methodology</h3>
+      <ol>
+        <li>Technical choices, CAD, assembly, tests</li>
+        <li>Embedded programming, debugging</li>
+      </ol>
+
+      <video controls loop muted playsinline class="w-full max-w-3xl mx-auto rounded shadow">
+        <source src="videos/video robot.mp4" type="video/mp4" />
+        Robot test in real conditions
+      </video>
+
+      <h3>Technologies & Tools</h3>
+      <p><strong>Software:</strong> Visual Studio Code, component diagram tools.<br>
+         <strong>Hardware:</strong> Arduino, sensors, motors, breadboard, etc.</p>
+
+      <h3>Lessons Learned</h3>
+      <p>Embedded programming, sensor integration, teamwork, rigorous testing.</p>
+    </section>
+
+    <div class="text-center mt-12 mb-20">
+      <a href="education-en.html#top"
+         class="inline-block px-6 py-2.5 bg-blue-700 text-white font-semibold rounded-full shadow hover:bg-blue-800 transition">
+        Back to Education
       </a>
     </div>
-  </div>
-</main>
+  </main>
 
-  <!-- Script pour la bascule -->
-  <script>
-    feather.replace();
-    const toggleBtn   = document.getElementById('toggleSidebar');
-    const sidebar     = document.getElementById('sidebarProjects');
-    const mainContent = document.getElementById('mainContent');
-    let isOpen        = false;
-
-    toggleBtn.addEventListener('click', () => {
-      isOpen = !isOpen;
-      sidebar.classList.toggle('-translate-x-full', !isOpen);
-      sidebar.classList.toggle('translate-x-0',    isOpen);
-      mainContent.classList.toggle('ml-64',        isOpen);
-    });
-
-    // Fermer la sidebar en mobile au clic sur un lien
-    sidebar.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 768 && isOpen) {
-          toggleBtn.click();
-        }
-      });
-    });
-  </script>
-
-
- <!-- Universal navigation between sections -->
-<section class="bg-gray-900 py-10 mt-16 border-t border-gray-800">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-xl font-semibold text-center text-white mb-8">Explore the portfolio</h2>
-    <nav aria-label="Main portfolio navigation">
-      <ul class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-300 text-center list-none p-0 m-0">
-        <li>
-          <a href="index-en.html" aria-label="Home - main page" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-            <img src="img/maison.png" alt="Home icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-            <div class="p-2">Home</div>
-          </a>
-        </li>
-        <li>
-          <a href="education-en.html" aria-label="Education - academic background" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-            <img src="img/education.png" alt="Education icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-            <div class="p-2">Education</div>
-          </a>
-        </li>
-        <li>
-          <a href="experiences-en.html" aria-label="Experiences - professional background" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-            <img src="img/experience.png" alt="Experiences icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-            <div class="p-2">Experiences</div>
-          </a>
-        </li>
-        <li>
-          <a href="hobbies-en.html" aria-label="Gallery - hobbies and photos" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-            <img src="img/galerie.png" alt="Gallery icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-            <div class="p-2">Gallery</div>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-white border-t mt-16 py-6 text-center text-sm text-gray-600" role="contentinfo">
-  <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
-    <p class="text-gray-500">© 2025 Nathan Ochem</p>
-    <div class="flex space-x-6">
-      <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:underline hover:text-blue-800 transition">📧 Email</a>
-      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline hover:text-blue-800 transition">🔗 LinkedIn</a>
+  <!-- Universal navigation -->
+  <section class="bg-gray-900 py-10 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-xl font-semibold text-center text-white mb-8">Explore the portfolio</h2>
+      <nav aria-label="Main portfolio navigation">
+        <ul class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-300 text-center list-none p-0 m-0">
+          <li>
+            <a href="index-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+              <img src="img/maison.png" alt="Home icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+              <div class="p-2">Home</div>
+            </a>
+          </li>
+          <li>
+            <a href="education-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+              <img src="img/education.png" alt="Education icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+              <div class="p-2">Education</div>
+            </a>
+          </li>
+          <li>
+            <a href="experiences-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
+              <img src="img/experience.png" alt="Experiences icon" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+              <div class="p-2">Experiences</div>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </section>
+
+  <!-- Footer -->
+<footer class="bg-white border-t mt-24 py-8 text-center text-sm text-gray-500 font-light tracking-wide">
+  <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
+    <p>© 2025 Nathan Ochem</p>
+    <div class="flex space-x-8">
+      <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:text-blue-800 hover:underline transition">📧 Email</a>
+      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">🔗 LinkedIn</a>
+      <a href="cv_nathan_ochem.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">📄 Resume</a>
+    </div>
+  </div>
+
+  <!-- Aperçu intégré du CV -->
+  <div class="max-w-4xl mx-auto mt-6 px-4">
+    <iframe src="cv_nathan_ochem.pdf" class="w-full h-96 border rounded-lg shadow-md"></iframe>
   </div>
 </footer>
 
+  <!-- Scripts -->
+  <script>
+    feather.replace();
+
+    // Progressive reveal with IntersectionObserver (and fallback)
+    function revealOnLoadAndScroll() {
+      const items = document.querySelectorAll('.fade-in');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+        items.forEach(el => io.observe(el));
+      } else {
+        const onScroll = () => {
+          items.forEach(el => {
+            const r = el.getBoundingClientRect();
+            if (r.top < innerHeight - 40) el.classList.add('visible');
+          });
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+      // Make above-the-fold items visible immediately
+      items.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < innerHeight - 40) el.classList.add('visible');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1) Reveal animation
+      revealOnLoadAndScroll();
+
+      // 2) Mobile menu
+      var burgerBtn = document.getElementById('burgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (burgerBtn && mobileMenu) {
+        burgerBtn.addEventListener('click', function () {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // 3) Sidebar (same pattern as FR)
+      var sidebar = document.getElementById('sidebar');
+      var sidebarOverlay = document.getElementById('sidebar-overlay');
+      var toggleBtn = document.getElementById('sidebarToggle');
+      var closeBtn = document.querySelector('.sidebar-close');
+
+      if (sidebar && sidebarOverlay && toggleBtn && closeBtn) {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+
+        toggleBtn.addEventListener('click', function () {
+          sidebar.classList.add('open');
+          sidebarOverlay.classList.add('active');
+        });
+        closeBtn.addEventListener('click', function () {
+          sidebar.classList.remove('open');
+          sidebarOverlay.classList.remove('active');
+        });
+        sidebarOverlay.addEventListener('click', function () {
+          sidebar.classList.remove('open');
+          sidebarOverlay.classList.remove('active');
+        });
+        sidebar.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function () {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
