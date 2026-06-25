@@ -4,327 +4,209 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Expériences - Nathan Ochem</title>
- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="theme-init.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link href="apple-style.css" rel="stylesheet" />
 </head>
+<body data-lang="fr" data-page="experiences">
 
+  <div id="site-header"></div>
 
-<style>
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  <main class="container">
 
-    .image-hover-zoom {
-      transition: transform 0.4s ease;
-    }
-    .image-hover-zoom:hover {
-      transform: scale(1.05);
-    }
+    <section class="fade-in">
+      <h1 class="text-center">Expériences professionnelles</h1>
+    </section>
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #ccc, transparent);
-      margin: 4rem auto;
-    }
-
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: #0071e3;
-      color: white;
-      padding: 0.75rem 1rem;
-      border-radius: 9999px;
-      font-size: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: none;
-      z-index: 100;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-    }
-
-    body.dark {
-      background: #1d1d1f;
-      color: #f5f5f7;
-    }
-    body.dark header,
-    body.dark footer,
-    body.dark section {
-      background-color: #2c2c2e;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-  </style>
-
-
-
-<body>
-
-  <!-- Header -->
-<header class="bg-white border-b border-gray-300 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
-  <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-    <a href="index.html" class="flex items-center space-x-3">
-      <img src="img/Logonathanochem.png" alt="Logo Nathan Ochem" class="h-10 w-10" />
-      <span class="text-2xl font-semibold tracking-tight text-gray-900 select-none">Nathan Ochem</span>
-    </a>
-    <nav class="hidden md:flex space-x-8 text-sm font-semibold text-gray-700">
-      <a href="index.html" class="hover:text-blue-600 transition-colors duration-200">Accueil</a>
-      <a href="education.html" class="hover:text-blue-600 transition-colors duration-200">Éducation</a>
-      <a href="projects.html" class="hover:text-blue-600 transition-colors duration-200">Projets</a>
-       <a href="experiences-en.html" class="text-blue-600 hover:underline">🇬🇧</a>
-    </nav>
-    <button id="burgerBtn" class="md:hidden focus:outline-none text-gray-700 hover:text-blue-600 transition-colors duration-200" aria-label="Menu">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-  <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 bg-white border-t border-gray-300 text-sm font-semibold text-gray-700">
-    <a href="index.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Accueil</a>
-    <a href="education.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Éducation</a>
-    <a href="projects.html" class="block py-3 hover:text-blue-600 transition-colors duration-200">Projets</a>
-     <a href="experiences-en.html" class="block py-3 text-blue-600 hover:underline">🇬🇧</a>
-  </div>
-</header>
-
-
-
-<!-- CONTENU -->
-<main class="py-16 px-4 max-w-6xl mx-auto">
-
-  <section class="parallax fade-in min-h-[60vh]">
-    
-  <h2 class="text-3xl font-bold mb-12 text-center">Expériences professionnelles</h2>
-</section>
-  <!-- Composant expérience réutilisable -->
-    <section class="mb-16 parallax fade-in min-h-[60vh]">
-      <div class="flex items-center gap-6 mb-4">
-        <img src="img/gillet horizontal cores black@400x.png" alt="Gillet Automobiles Logo" class="h-16 w-16 object-contain rounded-md border border-gray-300" />
-        <h3 class="text-2xl font-semibold tracking-wide">Gillet Automobiles</h3>
-      </div>
-      <p class="text-gray-600 italic mb-4">Juin 2025 – Août 2025</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Missions réalisées</h4>
-        <ul class="list-disc list-inside space-y-3 text-gray-700">
-          <li>
-            <strong>Pilotage autonome des essais réglementaires :</strong>
-            <p class="pl-4">Réalisation des campagnes d’essais pour l’homologation véhicule en autonomie, à partir du modèle 3D et des spécifications techniques, depuis la préparation du protocole jusqu’à l’exploitation des données brutes.</p>
-          </li>
-          <li>
-            <strong>Conception et mise en forme de la documentation :</strong>
-            <p class="pl-4">Création de fiches d’essais détaillées et de rapports d’analyse conformes aux exigences européennes, intégrant captures de la maquette 3D, jeux d’instructions et synthèses chiffrées.</p>
-          </li>
-          <li>
-            <strong>Veille et application des normes :</strong>
-            <p class="pl-4">Auto‑formation continue sur les réglementations européennes (Règlements CE, normes ISO/ADR) et adaptation rapide des protocoles à toute évolution normative.</p>
-          </li>
-        </ul>
+    <!-- C&T -->
+    <section class="exp-card fade-in">
+      <div class="exp-head">
+        <img src="img/CT_logo.png" alt="Logo C&T" class="experience-logo" />
+        <div>
+          <h3>C&amp;T</h3>
+          <p class="exp-meta">Mars 2026 – Août 2026 · Ingénieur mécanique R&amp;D produit, panneaux solaires</p>
+        </div>
       </div>
 
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Compétences développées</h4>
-        <ul class="list-disc list-inside text-gray-700 text-xs space-y-1 max-w-md">
-          <li>Modélisation CAO avancée (SolidWorks, CATIA)</li>
-          <li>Analyse des contraintes mécaniques</li>
-          <li>Rédaction de documentation technique</li>
-          <li>Gestion de projet et travail en équipe</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  </article>
+      <div class="exp-grid">
+        <div>
+          <h4>Missions réalisées</h4>
+          <ul class="exp-list">
+            <li>
+              <strong>Conception et dimensionnement de pièces mécaniques :</strong>
+              Conception sous SolidWorks de pièces et supports destinés à l'intégration de panneaux solaires, en lien direct avec les contraintes de fabrication et de montage terrain.
+            </li>
+            <li>
+              <strong>Calculs et simulations :</strong>
+              Vérification de la tenue mécanique à l'effort des structures sous SimSolid, calculs de flottabilité sous Excel pour les installations flottantes, et vérifications complémentaires sous RDM7 et ANSYS.
+            </li>
+            <li>
+              <strong>Rédaction de documentation technique :</strong>
+              Production de dossiers techniques à destination des fournisseurs (spécifications, plans de fabrication) ainsi que de documentation de montage diffusée aux équipes internes et partenaires sur le terrain.
+            </li>
+            <li>
+              <strong>Prototypage d'outillage :</strong>
+              Conception et prototypage d'outils dédiés au montage des panneaux, pensés pour simplifier et fiabiliser les opérations d'installation sur site.
+            </li>
+            <li>
+              <strong>Tests et validation :</strong>
+              Participation aux phases de test et de validation des prototypes mécaniques avant déploiement.
+            </li>
+            <li>
+              <strong>Coordination de projet :</strong>
+              Coordination avec plusieurs équipes (bureau d'études, fournisseurs, terrain) pour assurer la cohérence des livrables tout au long du développement produit.
+            </li>
+          </ul>
+        </div>
 
-  <!-- Exemple simplifié, tu peux dupliquer pour chaque expérience -->
-    <section class="mb-16 parallax fade-in min-h-[60vh]">
-      <div class="flex items-center gap-6 mb-4">
-        <img src="img/Logo_Elis_RVB@3x.png" alt="Elis Logo" class="h-16 w-16 object-contain rounded-md border border-gray-300" />
-        <h3 class="text-2xl font-semibold tracking-wide">Elis</h3>
+        <div>
+          <h4>Compétences développées</h4>
+          <ul class="exp-skills">
+            <li>Conception mécanique (SolidWorks)</li>
+            <li>Simulation et calcul de structures (SimSolid, ANSYS, RDM7)</li>
+            <li>Calculs de flottabilité</li>
+            <li>Rédaction de documentation technique fournisseurs</li>
+            <li>Prototypage d'outillage de montage</li>
+            <li>Coordination interservices</li>
+          </ul>
+        </div>
       </div>
-      <p class="text-gray-600 italic mb-4">Juin 2024 – Août 2024</p>
+    </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Missions réalisées</h4>
-        <ul class="list-disc list-inside space-y-3 text-gray-700">
-          <li>Livraison de vêtements professionnels auprès d'une clientèle B2B.</li>
-          <li>Organisation quotidienne de la tournée en totale autonomie, gestion des imprévus et des réclamations clients.</li>
-          <li>Ce poste m’a permis de renforcer ma rigueur, ma réactivité et mon sens du service dans un environnement exigeant.</li>
-        </ul>
+    <!-- Gillet Automobiles -->
+    <section class="exp-card fade-in">
+      <div class="exp-head">
+        <img src="img/gillet horizontal cores black@400x.png" alt="Gillet Automobiles Logo" class="experience-logo" />
+        <div>
+          <h3>Gillet Automobiles</h3>
+          <p class="exp-meta">Juin 2025 – Août 2025 · Stage assistant ingénieur</p>
+        </div>
       </div>
 
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Compétences développées</h4>
-        <ul class="list-disc list-inside text-gray-700 text-xs space-y-1 max-w-md">
-          <li>Sens de l’organisation</li>
-          <li>Polyvalence</li>
-          <li>Adaptabilité</li>
-          <li>Communication</li>
-          <li>Réflexion</li>
-          <li>Prise d'initiative</li>
-          <li>Autonomie</li>
-        </ul>
-      </div>
-    </div>
-      </section>
+      <div class="exp-grid">
+        <div>
+          <h4>Missions réalisées</h4>
+          <ul class="exp-list">
+            <li>
+              <strong>Pilotage autonome des essais réglementaires :</strong>
+              Réalisation des campagnes d'essais pour l'homologation véhicule en autonomie, à partir du modèle 3D et des spécifications techniques, depuis la préparation du protocole jusqu'à l'exploitation des données brutes.
+            </li>
+            <li>
+              <strong>Conception et mise en forme de la documentation :</strong>
+              Création de fiches d'essais détaillées et de rapports d'analyse conformes aux exigences européennes, intégrant captures de la maquette 3D, jeux d'instructions et synthèses chiffrées.
+            </li>
+            <li>
+              <strong>Veille et application des normes :</strong>
+              Auto-formation continue sur les réglementations européennes (Règlements CE, normes ISO/ADR) et adaptation rapide des protocoles à toute évolution normative.
+            </li>
+          </ul>
+        </div>
 
+        <div>
+          <h4>Compétences développées</h4>
+          <ul class="exp-skills">
+            <li>Modélisation CAO avancée (SolidWorks, CATIA)</li>
+            <li>Analyse des contraintes mécaniques</li>
+            <li>Rédaction de documentation technique</li>
+            <li>Gestion de projet et travail en équipe</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elis -->
+    <section class="exp-card fade-in">
+      <div class="exp-head">
+        <img src="img/Logo_Elis_RVB@3x.png" alt="Elis Logo" class="experience-logo" />
+        <div>
+          <h3>Elis</h3>
+          <p class="exp-meta">Juin 2024 – Août 2024 · Chauffeur livreur VL</p>
+        </div>
+      </div>
+
+      <div class="exp-grid">
+        <div>
+          <h4>Missions réalisées</h4>
+          <ul class="exp-list">
+            <li>Livraison de vêtements professionnels auprès d'une clientèle B2B.</li>
+            <li>Organisation quotidienne de la tournée en totale autonomie, gestion des imprévus et des réclamations clients.</li>
+            <li>Ce poste m'a permis de renforcer ma rigueur, ma réactivité et mon sens du service dans un environnement exigeant.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Compétences développées</h4>
+          <ul class="exp-skills">
+            <li>Sens de l'organisation</li>
+            <li>Polyvalence</li>
+            <li>Adaptabilité</li>
+            <li>Communication</li>
+            <li>Prise d'initiative</li>
+            <li>Autonomie</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <!-- McDonald's -->
-    <section class="mb-16 parallax fade-in min-h-[60vh]">
-      <div class="flex items-center gap-6 mb-4">
+    <section class="exp-card fade-in">
+      <div class="exp-head">
         <img src="img/McDonald's_Golden_Arches.svg.png" alt="McDonald's Logo" class="experience-logo" />
-        <h3 class="text-2xl font-semibold tracking-wide">McDonald's</h3>
+        <div>
+          <h3>McDonald's</h3>
+          <p class="exp-meta">Juin 2022 – Juillet 2022 et Août 2023 – Août 2023 · Équipier polyvalent</p>
+        </div>
       </div>
-    <p class="text-gray-600 italic mb-6">Juin 2022 – Juillet 2022 et Août 2023 – Août 2023</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Missions réalisées</h4>
-        <ul class="list-disc list-inside space-y-3 text-gray-700">
-          <li>
-            <strong>Travail polyvalent en restauration rapide :</strong>
-            <p class="pl-4">
-              Prise de commandes, service au comptoir et encaissements, gestion des files d’attente, et maintien de la propreté des espaces de travail.
-            </p>
-          </li>
-          <li>
-            <strong>Gestion du stress et rigueur :</strong>
-            <p class="pl-4">
+      <div class="exp-grid">
+        <div>
+          <h4>Missions réalisées</h4>
+          <ul class="exp-list">
+            <li>
+              <strong>Travail polyvalent en restauration rapide :</strong>
+              Prise de commandes, service au comptoir et encaissements, gestion des files d'attente, et maintien de la propreté des espaces de travail.
+            </li>
+            <li>
+              <strong>Gestion du stress et rigueur :</strong>
               Expérience marquante permettant de développer la capacité à gérer efficacement la pression dans un environnement à forte cadence, tout en maintenant un service de qualité.
-            </p>
-          </li>
-          <li>
-            <strong>Travail en équipe :</strong>
-            <p class="pl-4">
+            </li>
+            <li>
+              <strong>Travail en équipe :</strong>
               Collaboration étroite avec les collègues pour assurer un service fluide et réactif, avec une communication claire et une bonne organisation collective.
-            </p>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Compétences développées</h4>
+          <ul class="exp-skills">
+            <li>Gestion du stress en milieu dynamique</li>
+            <li>Capacité d'adaptation rapide</li>
+            <li>Communication efficace en équipe</li>
+            <li>Rigueur dans l'exécution des tâches</li>
+            <li>Sens du service client</li>
+            <li>Organisation et gestion des priorités</li>
+            <li>Respect des normes d'hygiène et de sécurité</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Compétences développées</h4>
-        <ul class="list-disc list-inside text-gray-700 text-xs space-y-1 max-w-md">
-          <li>Gestion du stress en milieu dynamique</li>
-          <li>Capacité d’adaptation rapide</li>
-          <li>Communication efficace en équipe</li>
-          <li>Rigueur dans l’exécution des tâches</li>
-          <li>Sens du service client</li>
-          <li>Organisation et gestion des priorités</li>
-          <li>Respect des normes d’hygiène et de sécurité</li>
-        </ul>
-      </div>
-    </div>
-  </article>
-</section>
+  </main>
 
-  
-  
-</main>
-
-<style>
-  .experience-logo {
-  height: 4rem;      /* h-16 = 4rem = 64px */
-  width: 4rem;       /* w-16 = 4rem = 64px */
-  object-fit: contain;
-  border-radius: 0.375rem; /* rounded-md */
-  border: 1px solid #D1D5DB; /* border-gray-300 */
-}
-</style>
-
-<section class="parallax fade-in min-h-[60vh]">
-
-  <!-- Universal navigation between sections -->
-  <section class="bg-gray-900 py-10 mt-16 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-xl font-semibold text-center text-white mb-8">Explorer le Portfolio</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-300 text-center">
-
-        <!-- Home -->
-        <a href="index-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-          <img src="img/maison.png" alt="Home" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-2">Accueil</div>
-        </a>
-
-        <!-- Education -->
-        <a href="education-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-          <img src="img/education.png" alt="Education" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-2">Éducation</div>
-        </a>
-
-        <!-- Projects -->
-        <a href="projects-en.html" class="group block bg-gray-800 hover:bg-gray-700 rounded-lg overflow-hidden transition">
-          <img src="img/projet.png" alt="Projects" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-2">Projets</div>
-        </a>
-
+  <section class="fade-in portfolio-nav-section">
+    <div class="container">
+      <h2 style="color: inherit; text-align:center;">Explorer le Portfolio</h2>
+      <div class="portfolio-nav">
+        <a href="index.html">Accueil</a>
+        <a href="education.html">Éducation</a>
+        <a href="projects.html">Projets</a>
       </div>
     </div>
   </section>
 
-</section>
+  <div id="site-footer"></div>
 
-
-
-  <!-- FOOTER -->
-<footer class="bg-white border-t mt-24 py-8 text-center text-sm text-gray-500 font-light tracking-wide">
-  <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
-    <p>© 2025 Nathan Ochem</p>
-    <div class="flex space-x-8">
-      <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:text-blue-800 hover:underline transition">📧 Email</a>
-      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">🔗 LinkedIn</a>
-      <a href="cv_nathan_ochem.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">📄 CV</a>
-    </div>
-  </div>
-</footer>
-
-  <script>
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    burgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    feather.replace();
-  </script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const faders = document.querySelectorAll('.fade-in');
-    const options = { threshold: 0.1 };
-
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, options);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  });
-  
-</script>
-
+  <script src="common.js"></script>
 </body>
 </html>

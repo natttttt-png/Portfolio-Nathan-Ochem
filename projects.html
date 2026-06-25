@@ -4,181 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projets - Nathan Ochem</title>
+  <script src="theme-init.js"></script>
 
-  <!-- Polices & Tailwind -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-
-  <!-- Ton CSS (ajuste le chemin si besoin) -->
-  <link href="css/apple-style.css" rel="stylesheet" />
-
-  <!-- Icônes -->
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.js"></script>
-
-  <!-- Indique que JS est actif pour activer l’animation progressive -->
-  <script>document.documentElement.classList.add('js');</script>
-
-  <style>
-    html, body {
-      font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
-      background: #f6f6f7;
-      color: #232326;
-    }
-
-    /* Fallback sans JS : le contenu est visible */
-    .fade-in { opacity: 1; transform: none; }
-    /* Avec JS : anim d’apparition */
-    .js .fade-in { opacity: 0; transform: translateY(6px); transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1); }
-    .js .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    .apple-card {
-      background: #fff;
-      border-radius: 2.3rem;
-      box-shadow: 0 8px 32px 0 rgba(32,32,37,.09), 0 2px 10px 0 rgba(60,60,67,.05);
-      padding: 2.8rem 2rem 2.2rem 2rem;
-      margin-bottom: 2.5rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      text-align: left;
-      border: 1px solid #ececec;
-    }
-
-    h1, h2, h3 { color: #18181b; }
-    h1 { font-size: 2.6rem; font-weight: 800; text-align:center; margin-bottom: 2.5rem; letter-spacing: -1.5px;}
-    h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 1.3rem;}
-    h3 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem;}
-    p, li { font-size: 1.09rem; line-height: 1.67;}
-    ul, ol { margin-left: 1.5rem;}
-    img, video { border-radius: 1.1rem; }
-
-    @media (max-width:640px) {
-      .apple-card { padding: 1.3rem 0.7rem; border-radius: 1.2rem;}
-      h1 { font-size: 2rem;}
-      h2 { font-size: 1.17rem;}
-      h3 { font-size: 1.02rem;}
-    }
-
-    /* Sidebar */
-    #sidebar-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(38, 38, 43, 0.14);
-      z-index: 60;
-      transition: background 0.2s;
-    }
-    #sidebar-overlay.active { display: block; }
-    #sidebar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 100vh;
-      width: 290px;
-      max-width: 90vw;
-      background: #fff;
-      box-shadow: 0 8px 32px 0 rgba(32,32,37,.13);
-      border-right: 1px solid #ededed;
-      transform: translateX(-100%);
-      transition: transform .33s cubic-bezier(.41,0,.2,1);
-      z-index: 70;
-      padding: 2.1rem 1.5rem 1.5rem 1.5rem;
-      display: flex; flex-direction: column;
-    }
-    #sidebar.open { transform: translateX(0); }
-    #sidebar h3 { color: #18181b; font-size: 1.11rem; font-weight: 700; margin-bottom: 1.2rem; }
-    #sidebar ul { margin:0; padding:0;}
-    #sidebar li { list-style: none; margin-bottom: .5rem;}
-    #sidebar a {
-      display: block; color: #18181b;
-      font-size: 1.09rem; font-weight: 500;
-      border-radius: 10px;
-      padding: 0.54em 1.1em;
-      transition: background .15s;
-      text-decoration: none;
-    }
-    #sidebar a:hover, #sidebar a.active {
-      background: #f3f3f7;
-      color: #0f0f10;
-      text-decoration: underline;
-    }
-    #sidebar .sidebar-close {
-      position: absolute; top: 1rem; right: 1rem;
-      background: transparent; border: none; font-size: 2rem; color: #232326; cursor: pointer;
-      z-index: 10; transition: color .15s;
-    }
-    #sidebar .sidebar-close:hover { color: #ae1523;}
-
-    /* Bouton toggle */
-    #sidebarToggle {
-      position: fixed;
-      top: 1.1rem; left: 1.1rem;
-      background: rgba(255,255,255,0.90);
-      border: 1px solid #e3e3e7;
-      color: #222;
-      font-size: 1.07rem;
-      border-radius: 13px;
-      padding: 0.43em 0.87em 0.43em 0.82em;
-      cursor: pointer;
-      z-index: 90;
-      font-weight: 500;
-      box-shadow: 0 1px 7px 0 rgba(45,45,55,.08);
-      display: flex; align-items: center; gap: 0.65em;
-      opacity: 0.92;
-    }
-    #sidebarToggle i { width: 1.1em; height: 1.1em; }
-    #sidebarToggle:hover {
-      background: #f3f3f8;
-      border-color: #bdbdbd;
-      color: #18181b;
-      opacity: 1;
-      box-shadow: 0 4px 18px 0 rgba(30,30,35,0.12);
-    }
-
-    @media (max-width:700px) {
-      #sidebar { width: 84vw; padding-left:1.1rem;}
-      #sidebarToggle { top:0.5rem; left:0.30rem; padding: 0.29em 0.61em;}
-    }
-  </style>
+  <link href="apple-style.css" rel="stylesheet" />
+  <link href="projects.css" rel="stylesheet" />
 </head>
-<body>
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm py-4 px-4">
-    <div class="max-w-5xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="flex items-center space-x-2 select-none">
-        <img src="img/Logonathanochem.png" alt="Logo Nathan Ochem" class="h-10 w-10" />
-        <span class="font-semibold text-lg tracking-tight">Nathan Ochem</span>
-      </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium">
-        <a href="index.html" class="hover:underline">Accueil</a>
-        <a href="experiences.html" class="hover:underline">Expériences</a>
-        <a href="education.html" class="hover:underline">Éducation</a>
-        <a href="projects-en.html" class="text-sm text-blue-600 hover:underline">🇬🇧</a>
-      </nav>
-      <button id="burgerBtn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 bg-white border-t border-gray-200 text-sm font-semibold text-gray-700">
-      <a href="index.html" class="block py-3 hover:underline">Accueil</a>
-      <a href="experiences.html" class="block py-3 hover:underline">Expériences</a>
-      <a href="education.html" class="block py-3 hover:underline">Éducation</a>
-      <a href="projects-en.html" class="block py-3 text-blue-600">🇬🇧</a>
-    </div>
-  </header>
+<body data-lang="fr" data-page="projects">
 
-  <!-- Toggle & Sidebar -->
+  <div id="site-header"></div>
+
+  <!-- Toggle & Sidebar (navigation interne entre les 6 projets) -->
   <button id="sidebarToggle" aria-label="Ouvrir le menu projets">
-    <i data-feather="menu"></i>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    Projets
   </button>
   <div id="sidebar-overlay"></div>
   <nav id="sidebar" aria-label="Menu Projets">
-    <button class="sidebar-close" aria-label="Fermer le menu"><i data-feather="x"></i></button>
+    <button class="sidebar-close" aria-label="Fermer le menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
     <h3>Projets</h3>
     <ul>
-      <li><a href="#projet-osiris">Echasses pour robot agricole</a></li>
+      <li><a href="#projet-osiris">Rehausse robot agricole</a></li>
       <li><a href="#projet-cible-rugby">Cible de Rugby</a></li>
       <li><a href="#projet-prothese">Prothèse</a></li>
       <li><a href="#projet-ctes">Transition Écologique</a></li>
@@ -188,78 +36,88 @@
     </ul>
   </nav>
 
-  <!-- Contenu -->
   <main class="pt-14 pb-10 px-3 fade-in" id="mainContent">
-    <h1 class="text-4xl font-extrabold text-center mb-10">Mes Projets</h1>
+    <h1>Mes Projets</h1>
 
-<!-- ==== OSIRIS ==== -->
-<section id="projet-osiris" class="apple-card fade-in">
-  <h2>Système de rehausse pour robot agricole</h2>
+    <!-- ==== OSIRIS ==== -->
+    <section id="projet-osiris" class="apple-card fade-in">
+      <h2>Système de rehausse pour robot agricole</h2>
 
-  <h3>Contexte et enjeu</h3>
-  <p>
-    Pour l’entreprise <strong>OSIRIS Agriculture</strong>, l’objectif du projet était de concevoir et d’intégrer un
-    système permettant de <strong>faire varier la garde au sol</strong> de leur robot d’irrigation.  
-    Ce dispositif devait permettre le passage au-dessus de cultures hautes sans les endommager,
-    tout en garantissant un gabarit conforme pour le transport routier.
-  </p>
+      <h3>Contexte et enjeu</h3>
+      <p>
+        Pour l'entreprise <strong>OSIRIS Agriculture</strong>, l'objectif du projet était de concevoir et d'intégrer un
+        système permettant de <strong>faire varier la garde au sol</strong> de leur robot d'irrigation.
+        Ce dispositif devait permettre le passage au-dessus de cultures hautes sans les endommager,
+        tout en garantissant un gabarit conforme pour le transport routier.
+      </p>
 
-  <h3>Objectifs</h3>
-  <ul>
-    <li>Permettre la rehausse de la garde au sol du robot agricole.</li>
-    <li>Assurer un transport routier conforme aux dimensions réglementaires.</li>
-  </ul>
+      <div class="alt-stack">
+        <div class="alt-row">
+          <img src="img/osiris-principe-verin.jpg" alt="Illustration de principe d'un vérin de levage mécanique" loading="lazy" />
+          <p>Illustration de principe d'un système de levage par vérin mécanique (image d'illustration, non issue du projet réel).</p>
+        </div>
+        <div class="alt-row alt-row--reverse">
+          <img src="img/osiris-principe-robot.jpg" alt="Illustration de principe d'un robot agricole autonome" loading="lazy" />
+          <p>Illustration de principe d'un robot agricole autonome équipé d'une garde au sol réglable (image d'illustration, non issue du projet réel).</p>
+        </div>
+      </div>
 
-  <h3>Mon rôle</h3>
-  <ul>
-    <li>Réalisation d’un état de l’art et sélection du principe de levage le plus adapté.</li>
-    <li>Dimensionnement et validation du système retenu.</li>
-    <li>Conception numérique et intégration sur la maquette 3D existante.</li>
-    <li>Simulation mécanique du système à l’aide d’<strong>ANSYS Workbench</strong>.</li>
-  </ul>
+      <h3>Objectifs</h3>
+      <ul>
+        <li>Permettre la rehausse de la garde au sol du robot agricole.</li>
+        <li>Assurer un transport routier conforme aux dimensions réglementaires.</li>
+      </ul>
 
-  <h3>Méthodologie</h3>
-  <ol>
-    <li>Échanges avec le client pour définir précisément les besoins fonctionnels.</li>
-    <li>Recherche et analyse de solutions existantes.</li>
-    <li>Comparaison des concepts via un tableau d’aide à la décision.</li>
-    <li>Modélisation 3D et conception paramétrique sous <strong>CATIA V6</strong>.</li>
-    <li>Calculs numériques et vérification de la résistance mécanique du système.</li>
-  </ol>
+      <h3>Mon rôle</h3>
+      <ul>
+        <li>Réalisation d'un état de l'art et sélection du principe de levage le plus adapté.</li>
+        <li>Dimensionnement et validation du système retenu.</li>
+        <li>Conception numérique et intégration sur la maquette 3D existante.</li>
+        <li>Simulation mécanique du système à l'aide d'<strong>ANSYS Workbench</strong>.</li>
+      </ul>
 
-  <h3>Technologies & outils</h3>
-  <p>
-    <strong>Dimensionnement :</strong> fiches techniques fournisseurs, calculs de résistance des matériaux.<br>
-    <strong>Logiciels utilisés :</strong> CATIA V6, ANSYS Workbench, Excel, Word.
-  </p>
+      <h3>Méthodologie</h3>
+      <ol>
+        <li>Échanges avec le client pour définir précisément les besoins fonctionnels.</li>
+        <li>Recherche et analyse de solutions existantes.</li>
+        <li>Comparaison des concepts via un tableau d'aide à la décision.</li>
+        <li>Modélisation 3D et conception paramétrique sous <strong>CATIA V6</strong>.</li>
+        <li>Calculs numériques et vérification de la résistance mécanique du système.</li>
+      </ol>
 
-  <h3>Leçons apprises</h3>
-  <p>
-    Renforcement des compétences en gestion de projet, en conception mécanique
-    et en validation numérique des systèmes.
-  </p>
-</section>
+      <h3>Technologies &amp; outils</h3>
+      <p>
+        <strong>Dimensionnement :</strong> fiches techniques fournisseurs, calculs de résistance des matériaux.<br>
+        <strong>Logiciels utilisés :</strong> CATIA V6, ANSYS Workbench, Excel, Word.
+      </p>
 
-
-
+      <h3>Leçons apprises</h3>
+      <p>
+        Ce projet, mené en fin de formation, a été l'occasion de mobiliser de manière transversale
+        l'ensemble des compétences acquises au cours du cycle ingénieur : conception mécanique,
+        résistance des matériaux, simulation numérique, choix de composants standards et gestion de
+        projet. Il a renforcé ma capacité à synthétiser plusieurs domaines techniques pour aboutir à
+        une solution fonctionnelle et industrialisable.
+      </p>
+    </section>
 
     <!-- ==== Cible Rugby : Carousel ==== -->
     <section id="projet-cible-rugby" class="apple-card fade-in">
       <h2>Projet Cible de Rugby</h2>
       <h3>Contexte et enjeu</h3>
-      <p>En partenariat avec le Stade Rochelais, l’objectif était de concevoir un dispositif de simulation pour optimiser l’entraînement des touches, en reproduisant fidèlement les déplacements et la dynamique des joueurs.</p>
-      <div class="overflow-x-auto flex gap-8 py-2 mb-7" style="scroll-snap-type:x mandatory;">
-        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/vue de face.png" alt="Vue de face" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Vue de face</p>
+      <p>En partenariat avec le Stade Rochelais, l'objectif était de concevoir un dispositif de simulation pour optimiser l'entraînement des touches, en reproduisant fidèlement les déplacements et la dynamique des joueurs.</p>
+      <div class="carousel" role="group" aria-label="Photos du projet cible de rugby">
+        <div class="carousel-item">
+          <img src="img/vue de face.png" alt="Vue de face de la cible de rugby" loading="lazy" />
+          <p class="carousel-caption">Vue de face</p>
         </div>
-        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/vue de droite.png" alt="Vue de droite" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Vue de droite</p>
+        <div class="carousel-item">
+          <img src="img/vue de droite.png" alt="Vue de droite de la cible de rugby" loading="lazy" />
+          <p class="carousel-caption">Vue de droite</p>
         </div>
-        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/vue iso.png" alt="Vue isométrique" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Vue isométrique</p>
+        <div class="carousel-item">
+          <img src="img/vue iso.png" alt="Vue isométrique de la cible de rugby" loading="lazy" />
+          <p class="carousel-caption">Vue isométrique</p>
         </div>
       </div>
       <h3>Objectifs</h3>
@@ -282,10 +140,9 @@
         <li>Phase de réflexion, sélection via tableau comparatif</li>
         <li>Calculs, modélisation 3D sous CATIA V6</li>
       </ol>
-      <h3>Technologies & outils</h3>
+      <h3>Technologies &amp; outils</h3>
       <p><strong>Dimensionnement :</strong> Fiches techniques fournisseurs, calculs de résistance des matériaux.<br>
-        <strong>Logiciels utilisés :</strong> CATIA V6, Excel, Word.
-      </p>
+        <strong>Logiciels utilisés :</strong> CATIA V6, Excel, Word.</p>
       <h3>Leçons apprises</h3>
       <p>Approfondissement de la gestion de projet, du dimensionnement mécanique et de la collaboration en équipe pluridisciplinaire.</p>
     </section>
@@ -294,19 +151,19 @@
     <section id="projet-prothese" class="apple-card fade-in">
       <h2>Projet de prothèse pour amputés post-cubitaux</h2>
       <h3>Contexte et enjeu</h3>
-      <p>À la demande d’une ergothérapeute, nous avons conçu une prothèse d’avant-bras destinée à la pratique du vélo, réglable et adaptable à différents patients, facilitant la rééducation.</p>
-      <div class="flex flex-col gap-8 mb-7">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <img src="img/Pinnov plans.png" alt="Plan fonctionnel de la prothèse" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Premiers plans fonctionnels pour comprendre les contraintes.</p>
+      <p>À la demande d'une ergothérapeute, nous avons conçu une prothèse d'avant-bras destinée à la pratique du vélo, réglable et adaptable à différents patients, facilitant la rééducation.</p>
+      <div class="alt-stack">
+        <div class="alt-row">
+          <img src="img/Pinnov plans.png" alt="Plan fonctionnel de la prothèse" loading="lazy" />
+          <p>Premiers plans fonctionnels pour comprendre les contraintes.</p>
         </div>
-        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-          <img src="img/Pinnov Iso.png" alt="Modélisation 3D" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-right mt-3 md:mt-0">Modélisation 3D de la prothèse sous CATIA.</p>
+        <div class="alt-row alt-row--reverse">
+          <img src="img/Pinnov Iso.png" alt="Modélisation 3D de la prothèse" loading="lazy" />
+          <p>Modélisation 3D de la prothèse sous CATIA.</p>
         </div>
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <img src="img/IMG_6586.JPG" alt="Prothèse réalisée" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Prothèse finale fabriquée et testée.</p>
+        <div class="alt-row">
+          <img src="img/IMG_6586.JPG" alt="Prothèse réalisée et testée" loading="lazy" />
+          <p>Prothèse finale fabriquée et testée.</p>
         </div>
       </div>
       <h3>Objectifs</h3>
@@ -328,7 +185,7 @@
         <li>Matrice de choix, calculs, CAO, plans</li>
         <li>Fabrication : impression 3D, usinage</li>
       </ol>
-      <h3>Technologies & outils</h3>
+      <h3>Technologies &amp; outils</h3>
       <p><strong>Logiciels :</strong> CATIA V6, Excel, Word.<br>
         <strong>Machines :</strong> Tour, fraiseuse, imprimante 3D.<br>
         <strong>Dimensionnement :</strong> Calculs RDM, simulations.</p>
@@ -340,22 +197,22 @@
     <section id="projet-ctes" class="apple-card fade-in">
       <h2>Challenge Transition Écologique et Sociétale</h2>
       <h3>Contexte et enjeu</h3>
-      <p>Projet d’équipe d’ingénieurs : rendre les poids lourds plus écologiques grâce à une alimentation électrique via caténaires sur autoroute (système de pantographe).</p>
-      <div class="overflow-x-auto flex gap-8 py-2 mb-7" style="scroll-snap-type:x mandatory;">
-        <div class="flex flex-col items-center w-72 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/JUVR8807.JPG" alt="Prototype - vue de dessus" class="object-contain rounded shadow w-full h-48 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Prototype – vue de dessus</p>
+      <p>Projet d'équipe d'ingénieurs : rendre les poids lourds plus écologiques grâce à une alimentation électrique via caténaires sur autoroute (système de pantographe).</p>
+      <div class="carousel" role="group" aria-label="Photos du prototype CTES">
+        <div class="carousel-item">
+          <img src="img/JUVR8807.JPG" alt="Prototype du système de pantographe, vue de dessus" loading="lazy" />
+          <p class="carousel-caption">Prototype – vue de dessus</p>
         </div>
-        <div class="flex flex-col items-center w-72 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/MDSY6569.JPG" alt="Prototype - vue de dessous" class="object-contain rounded shadow w-full h-48 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Prototype – vue de dessous</p>
+        <div class="carousel-item">
+          <img src="img/MDSY6569.JPG" alt="Prototype du système de pantographe, vue de dessous" loading="lazy" />
+          <p class="carousel-caption">Prototype – vue de dessous</p>
         </div>
       </div>
       <h3>Objectifs</h3>
       <ul>
         <li>Réduire les émissions polluantes du transport poids lourds</li>
-        <li>Concevoir un prototype de captation d’énergie</li>
-        <li>Évaluer la faisabilité et l’impact environnemental</li>
+        <li>Concevoir un prototype de captation d'énergie</li>
+        <li>Évaluer la faisabilité et l'impact environnemental</li>
       </ul>
       <h3>Mon rôle</h3>
       <ul>
@@ -369,7 +226,7 @@
         <li>Évaluation technique et environnementale</li>
         <li>Maquette physique à coût minimal</li>
       </ol>
-      <h3>Technologies & outils</h3>
+      <h3>Technologies &amp; outils</h3>
       <p><strong>Machines :</strong> découpe laser, multimètre, composants de récupération.<br>
         <strong>Logiciels :</strong> Canva, PowerPoint, tableurs.</p>
       <h3>Leçons apprises</h3>
@@ -380,19 +237,19 @@
     <section id="projet-couteau" class="apple-card fade-in">
       <h2>Projet couteau électrique</h2>
       <h3>Contexte et enjeu</h3>
-      <p>Étude et modélisation mécanique complète d’un couteau électrique domestique. Analyse cinématique, transformation du mouvement moteur en mouvement alternatif des lames, visualisation 3D.</p>
-      <div class="flex flex-col gap-8 mb-7">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <img src="img/couteau réel.png" alt="Couteau électrique réel" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Couteau électrique réel, point de départ : démontage et observation des pièces.</p>
+      <p>Étude et modélisation mécanique complète d'un couteau électrique domestique. Analyse cinématique, transformation du mouvement moteur en mouvement alternatif des lames, visualisation 3D.</p>
+      <div class="alt-stack">
+        <div class="alt-row">
+          <img src="img/couteau réel.png" alt="Couteau électrique réel démonté" loading="lazy" />
+          <p>Couteau électrique réel, point de départ : démontage et observation des pièces.</p>
         </div>
-        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-          <img src="img/modelisation 3D.png" alt="Modélisation 3D du couteau" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-right mt-3 md:mt-0">Modélisation 3D du mécanisme reconstitué sur Creo Parametric.</p>
+        <div class="alt-row alt-row--reverse">
+          <img src="img/modelisation 3D.png" alt="Modélisation 3D du couteau sous Creo" loading="lazy" />
+          <p>Modélisation 3D du mécanisme reconstitué sur Creo Parametric.</p>
         </div>
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <img src="img/element-couteau.png" alt="Système mécanique modélisé" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Système mécanique interne modélisé.</p>
+        <div class="alt-row">
+          <img src="img/element-couteau.png" alt="Système mécanique interne modélisé" loading="lazy" />
+          <p>Système mécanique interne modélisé.</p>
         </div>
       </div>
       <h3>Objectifs</h3>
@@ -412,12 +269,11 @@
         <li>Analyse des liaisons, mesures précises</li>
         <li>Modélisation 3D, animation, validation</li>
       </ol>
-      <video controls loop muted playsinline class="w-full max-w-3xl mx-auto rounded shadow">
+      <video controls loop muted playsinline class="project-video">
         <source src="videos/Video mecanisme.mp4" type="video/mp4" />
-        <source src="videos/Video mecanisme.mp4" type="video/webm" />
-        Animation de la cinématique du couteau.
+        Votre navigateur ne prend pas en charge la vidéo. Il s'agit d'une animation de la cinématique du couteau.
       </video>
-      <h3>Technologies & outils</h3>
+      <h3>Technologies &amp; outils</h3>
       <p><strong>Logiciel :</strong> Creo Parametric.<br>
         <strong>Outils :</strong> Pied à coulisse, réglet.<br>
         <strong>Matériel réel analysé</strong></p>
@@ -429,25 +285,25 @@
     <section id="projet-langue" class="apple-card fade-in">
       <h2>Projet Anglais / Jeu de société F1</h2>
       <h3>Contexte et enjeu</h3>
-      <p>Projet de langues en équipe : création d’un jeu de société Formule 1 inspiré du Trivial Pursuit (conception, rédaction règles, fabrication physique, jeu jouable en classe).</p>
-      <div class="overflow-x-auto flex gap-8 py-2 mb-7" style="scroll-snap-type:x mandatory;">
-        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/question facile.png" alt="Carte de question facile" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Carte facile</p>
+      <p>Projet de langues en équipe : création d'un jeu de société Formule 1 inspiré du Trivial Pursuit (conception, rédaction règles, fabrication physique, jeu jouable en classe).</p>
+      <div class="carousel" role="group" aria-label="Cartes du jeu de société F1">
+        <div class="carousel-item">
+          <img src="img/question facile.png" alt="Carte de question facile du jeu F1" loading="lazy" />
+          <p class="carousel-caption">Carte facile</p>
         </div>
-        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/question medium.png" alt="Carte de question moyenne" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Carte moyenne</p>
+        <div class="carousel-item">
+          <img src="img/question medium.png" alt="Carte de question moyenne du jeu F1" loading="lazy" />
+          <p class="carousel-caption">Carte moyenne</p>
         </div>
-        <div class="flex flex-col items-center w-64 flex-shrink-0" style="scroll-snap-align: start;">
-          <img src="img/question dure.png" alt="Carte de question difficile" class="object-contain rounded shadow w-full h-44 bg-gray-50" />
-          <p class="text-xs text-gray-500 text-center mt-2">Carte difficile</p>
+        <div class="carousel-item">
+          <img src="img/question dure.png" alt="Carte de question difficile du jeu F1" loading="lazy" />
+          <p class="carousel-caption">Carte difficile</p>
         </div>
       </div>
       <h3>Objectifs</h3>
       <ul>
         <li>Créer un jeu original</li>
-        <li>Améliorer l’anglais en équipe par un projet ludique</li>
+        <li>Améliorer l'anglais en équipe par un projet ludique</li>
         <li>Concevoir un jeu jouable</li>
       </ul>
       <h3>Mon rôle</h3>
@@ -460,30 +316,30 @@
         <li>Choix du support</li>
         <li>Règles, questions, impression, pions 3D</li>
       </ol>
-      <h3>Technologies & outils</h3>
+      <h3>Technologies &amp; outils</h3>
       <p><strong>Machines :</strong> Imprimante 3D, imprimante classique, plastifieuse.<br>
         <strong>Logiciels :</strong> Logiciel d'impression 3D, Canva.</p>
       <h3>Leçons apprises</h3>
-      <p>Travail d’équipe, communication, rigueur, créativité, pédagogie.</p>
+      <p>Travail d'équipe, communication, rigueur, créativité, pédagogie.</p>
     </section>
 
     <!-- ==== Robot : Empilée alternée ==== -->
     <section id="projet-robot" class="apple-card fade-in">
       <h2>Projet Robot sur damier</h2>
       <h3>Contexte et enjeu</h3>
-      <p>Projet d’équipe de 4 élèves : robot autonome évoluant sur un damier d’échecs, devant saisir et ramener un objet en évitant des obstacles. Programmation, conception, modélisation, tests.</p>
-      <div class="flex flex-col gap-8 mb-7">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <img src="img/damier.png" alt="Damier" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Damier sur lequel évolue le robot, avec zones d’objectif et obstacles.</p>
+      <p>Projet d'équipe de 4 élèves : robot autonome évoluant sur un damier d'échecs, devant saisir et ramener un objet en évitant des obstacles. Programmation, conception, modélisation, tests.</p>
+      <div class="alt-stack">
+        <div class="alt-row">
+          <img src="img/damier.png" alt="Damier sur lequel évolue le robot" loading="lazy" />
+          <p>Damier sur lequel évolue le robot, avec zones d'objectif et obstacles.</p>
         </div>
-        <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-          <img src="img/Vue 3-4 arrière.png" alt="Robot vue arrière" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-right mt-3 md:mt-0">Vue 3/4 arrière de la modélisation du robot.</p>
+        <div class="alt-row alt-row--reverse">
+          <img src="img/Vue 3-4 arrière.png" alt="Vue arrière de la modélisation du robot" loading="lazy" />
+          <p>Vue 3/4 arrière de la modélisation du robot.</p>
         </div>
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <img src="img/Vue bas.png" alt="Robot vue dessous" class="rounded shadow w-full md:w-1/2 h-52 object-contain bg-gray-50" />
-          <p class="text-xs text-gray-500 md:w-1/2 text-center md:text-left mt-3 md:mt-0">Modélisation vue de dessous, mise en évidence des capteurs.</p>
+        <div class="alt-row">
+          <img src="img/Vue bas.png" alt="Vue de dessous du robot, capteurs visibles" loading="lazy" />
+          <p>Modélisation vue de dessous, mise en évidence des capteurs.</p>
         </div>
       </div>
       <h3>Objectifs</h3>
@@ -502,11 +358,11 @@
         <li>Choix technique, conception CAO, assemblage, tests</li>
         <li>Programmation embarquée, débogage</li>
       </ol>
-      <video controls loop muted playsinline class="w-full max-w-3xl mx-auto rounded shadow">
+      <video controls loop muted playsinline class="project-video">
         <source src="videos/video robot.mp4" type="video/mp4" />
-        Test du robot en conditions réelles
+        Votre navigateur ne prend pas en charge la vidéo. Il s'agit d'un test du robot en conditions réelles.
       </video>
-      <h3>Technologies & outils</h3>
+      <h3>Technologies &amp; outils</h3>
       <p><strong>Logiciels :</strong> Visual Studio Code, outils schéma composants.<br>
         <strong>Matériel :</strong> Arduino, capteurs, moteurs, breadboard, etc.</p>
       <h3>Leçons apprises</h3>
@@ -514,96 +370,36 @@
     </section>
 
     <div class="text-center mt-12 mb-20">
-      <a href="education.html#top"
-        class="inline-block px-6 py-2.5 bg-blue-700 text-white font-semibold rounded-full shadow hover:bg-blue-800 transition">
-        Retour à l’éducation
+      <a href="education.html#top" class="cta-button">
+        Retour à l'éducation
       </a>
     </div>
   </main>
 
-  <!-- Footer -->
-<footer class="bg-white border-t mt-24 py-8 text-center text-sm text-gray-500 font-light tracking-wide">
-  <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
-    <p>© 2025 Nathan Ochem</p>
-    <div class="flex space-x-8">
-      <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:text-blue-800 hover:underline transition">📧 Email</a>
-      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">🔗 LinkedIn</a>
-      <a href="cv_nathan_ochem.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">📄 CV</a>
-    </div>
-  </div>
-</footer>
+  <div id="site-footer"></div>
 
-  <!-- Scripts -->
+  <script src="common.js"></script>
   <script>
-    feather.replace();
+    document.addEventListener("layout:ready", () => {
+      const sidebar = document.getElementById("sidebar");
+      const sidebarOverlay = document.getElementById("sidebar-overlay");
+      const toggleBtn = document.getElementById("sidebarToggle");
+      const closeBtn = document.querySelector(".sidebar-close");
+      if (!sidebar || !sidebarOverlay || !toggleBtn || !closeBtn) return;
 
-    // Révélation progressive : IntersectionObserver si dispo, sinon fallback
-    function revealOnLoadAndScroll() {
-      const items = document.querySelectorAll('.fade-in');
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { root: null, rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
-        items.forEach(el => io.observe(el));
-      } else {
-        const onScroll = () => {
-          items.forEach(el => {
-            const r = el.getBoundingClientRect();
-            if (r.top < innerHeight - 40) el.classList.add('visible');
-          });
-        };
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-      }
-      // Rendre immédiatement visibles les éléments au-dessus du pli
-      items.forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.top < innerHeight - 40) el.classList.add('visible');
-      });
-    }
+      const openSidebar = () => {
+        sidebar.classList.add("open");
+        sidebarOverlay.classList.add("active");
+      };
+      const closeSidebar = () => {
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("active");
+      };
 
-    document.addEventListener('DOMContentLoaded', function () {
-      // 1) Activation de l’animation progressive (évite l’écran blanc)
-      revealOnLoadAndScroll();
-
-      // 2) Menu mobile
-      var burgerBtn = document.getElementById('burgerBtn');
-      var mobileMenu = document.getElementById('mobileMenu');
-      if (burgerBtn && mobileMenu) {
-        burgerBtn.addEventListener('click', function () {
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-
-      // 3) Sidebar
-      var sidebar = document.getElementById('sidebar');
-      var sidebarOverlay = document.getElementById('sidebar-overlay');
-      var toggleBtn = document.getElementById('sidebarToggle');
-      var closeBtn = document.querySelector('.sidebar-close');
-
-      if (sidebar && sidebarOverlay && toggleBtn && closeBtn) {
-        sidebar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
-
-        toggleBtn.addEventListener('click', function () {
-          sidebar.classList.add('open');
-          sidebarOverlay.classList.add('active');
-        });
-        closeBtn.addEventListener('click', function () {
-          sidebar.classList.remove('open');
-          sidebarOverlay.classList.remove('active');
-        });
-        sidebarOverlay.addEventListener('click', function () {
-          sidebar.classList.remove('open');
-          sidebarOverlay.classList.remove('active');
-        });
-        sidebar.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', function () {
-            sidebar.classList.remove('open');
-            sidebarOverlay.classList.remove('active');
-          });
-        });
-      }
+      toggleBtn.addEventListener("click", openSidebar);
+      closeBtn.addEventListener("click", closeSidebar);
+      sidebarOverlay.addEventListener("click", closeSidebar);
+      sidebar.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeSidebar));
     });
   </script>
 </body>

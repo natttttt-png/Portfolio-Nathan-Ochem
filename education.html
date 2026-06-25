@@ -4,369 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Parcours Éducatif - Nathan Ochem</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="theme-init.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <style>
-    html, body {
-      font-family: 'Inter', 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
-      background: #f6f6f7;
-      color: #232326;
-    }
-    .fade-in { opacity: 0; transition: opacity .9s cubic-bezier(.4,0,.2,1);}
-    .fade-in.visible { opacity: 1;}
-    .chip {
-      display: inline-flex; align-items: center;
-      background: #f3f3f4;
-      color: #2e2e32;
-      padding: 0.44em 1.3em 0.44em 1em;
-      font-size: 1.05rem; border-radius: 999px;
-      margin: 8px 9px; font-weight: 500;
-      box-shadow: 0 1px 6px 0 rgba(40,40,50,0.06);
-      transition: background .18s;
-      letter-spacing: 0.01em;
-    }
-    .chip.project {
-      background: #e5e7eb;
-      color: #111;
-      font-weight: 600;
-      border: 1px solid #ddd;
-    }
-    .chip a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px dotted #bbb;
-      transition: border-color .18s;
-    }
-    .chip a:hover {
-      border-bottom: 1px solid #232326;
-      color: #232326;
-      text-decoration: underline;
-    }
-    .school-card {
-      background: #fff;
-      border-radius: 2.5rem;
-      box-shadow: 0 10px 32px 0 rgba(32,32,37,.09), 0 2px 10px 0 rgba(60,60,67,.05);
-      padding: 4.2rem 2.1rem 2.5rem 2.1rem;
-      margin-bottom: 3.2rem;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      text-align: center;
-    }
-    .school-logo {
-      height: 150px; width: 150px;
-      object-fit: contain;
-      background: #fafbfc;
-      border-radius: 1.5rem;
-      border: 1px solid #ececec;
-      margin: -90px auto 1.4rem auto;
-      box-shadow: 0 2px 18px 0 rgba(0,0,0,0.06);
-      display: block;
-    }
-    .school-title {
-      font-size: 1.52rem;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-      color: #232326;
-      margin-bottom: .15em;
-    }
-    .school-years {
-      font-size: 1.08rem;
-      color: #888;
-      margin-bottom: .68em;
-    }
-    .school-badge {
-      display: inline-block;
-      padding: .35em 1.1em;
-      font-size: 1em;
-      border-radius: 999px;
-      background: #f1f1f4;
-      color: #5b5b61;
-      font-weight: 500;
-      margin-bottom: 1.25em;
-      letter-spacing: .02em;
-    }
-    .semester-title {
-      text-transform: uppercase;
-      font-size: 1.07rem;
-      letter-spacing: .05em;
-      color: #b1b1b6;
-      font-weight: 600;
-      margin: 2.6em 0 0.5em 0;
-      text-align: left;
-      padding-left: 8px;
-    }
-    .divider {
-      width: 100%; height: 1px;
-      background: linear-gradient(to right, #ececec, #f5f5f7, #ececec);
-      margin: 2.3em 0 1.3em 0;
-      border: none;
-    }
-    .chips-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px 18px;
-      justify-content: center;
-      margin: 1.1em 0 0.8em 0;
-    }
-    .apple-link {
-      color: #2e2e32;
-      font-weight: 500;
-      text-underline-offset: 2.5px;
-      border-bottom: 1px dotted #bbb;
-      transition: color .18s, border-color .18s;
-      text-decoration: none;
-    }
-    .apple-link:hover {
-      border-bottom: 1px solid #232326;
-      color: #232326;
-      text-decoration: underline;
-    }
-    @media (min-width:700px){
-      .school-card { padding-left: 4rem; padding-right: 4rem;}
-    }
-  </style>
+  <link href="apple-style.css" rel="stylesheet" />
+  <script defer src="https://unpkg.com/feather-icons"></script>
 </head>
-<body>
-<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm py-4 px-4">
-  <div class="max-w-5xl mx-auto flex justify-between items-center">
-    <a href="index.html" class="flex items-center space-x-2 select-none">
-      <img src="img/Logonathanochem.png" alt="Logo Nathan Ochem" class="h-10 w-10" />
-      <span class="font-semibold text-lg tracking-tight">Nathan Ochem</span>
-    </a>
-    <nav class="hidden md:flex space-x-8 text-sm font-medium">
-      <a href="index.html" class="hover:underline apple-link">Accueil</a>
-      <a href="experiences.html" class="hover:underline apple-link">Expériences</a>
-      <a href="projects.html" class="hover:underline apple-link">Projets</a>
-      <a href="education-en.html" class="apple-link">🇬🇧</a>
-    </nav>
-    <button id="burgerBtn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Menu">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-  <div id="mobileMenu" class="md:hidden hidden px-6 pb-4 bg-white border-t border-gray-200 text-sm font-semibold text-gray-700">
-    <a href="index.html" class="block py-3 hover:underline apple-link">Accueil</a>
-    <a href="experiences.html" class="block py-3 hover:underline apple-link">Expériences</a>
-    <a href="projects.html" class="block py-3 hover:underline apple-link">Projets</a>
-    <a href="education-en.html" class="block py-3 apple-link">🇬🇧</a>
-  </div>
-</header>
+<body data-lang="fr" data-page="education">
 
-<main class="pt-14 pb-10 px-3">
-  <h1 class="text-3xl font-semibold text-center text-gray-900 mb-12 fade-in">Parcours éducatif</h1>
-  
-  <!-- POLYTECH LILLE -->
-  <section class="school-card fade-in">
-    <img src="img/Pölytech et ustl logo.png" alt="Logo Polytech Lille" class="school-logo fade-in" />
-    <div class="school-title fade-in">Polytechnique de Lille</div>
-    <div class="school-years fade-in">Septembre 2023 – Juillet 2026</div>
-    <div class="school-badge fade-in">Cycle ingénieur</div>
-    <div class="fade-in mb-4 text-sm">
-      <a href="docs/maquette Mécanique.pdf" class="apple-link" target="_blank">
-        Voir la maquette pédagogique de la spécialité mécanique
-      </a>
+  <div id="site-header"></div>
+
+  <main class="pt-14 pb-10 px-3 max-w-5xl mx-auto">
+    <h1 class="text-center mb-12 fade-in">Parcours éducatif</h1>
+
+    <!-- POLYTECH LILLE -->
+    <section class="school-card fade-in">
+      <img src="img/Pölytech et ustl logo.png" alt="Logo Polytech Lille" class="school-logo" />
+      <div class="school-title">Polytechnique de Lille</div>
+      <div class="school-years">Septembre 2023 – Juillet 2026</div>
+      <div class="school-badge">Cycle ingénieur</div>
+      <div class="mb-4 text-sm">
+        <a href="docs/maquette_Mecanique.pdf" class="apple-link" target="_blank">
+          Voir la maquette pédagogique de la spécialité mécanique
+        </a>
+      </div>
+      <hr class="divider" />
+      <div>
+        <div class="semester-title">8<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="sliders" class="w-4 h-4 mr-1"></i>Modélisation et commande</span>
+          <span class="chip"><i data-feather="settings" class="w-4 h-4 mr-1"></i>Conception systèmes</span>
+          <span class="chip"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Machines hydrauliques</span>
+          <span class="chip"><i data-feather="users" class="w-4 h-4 mr-1"></i>Management</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Outils numériques</span>
+          <span class="chip"><i data-feather="trending-up" class="w-4 h-4 mr-1"></i>Fatigue</span>
+          <span class="chip project">
+            <i data-feather="target" class="w-4 h-4 mr-1"></i>
+            <a href="projects.html#projet-cible-rugby" class="apple-link">Projet cible de rugby</a>
+          </span>
+        </div>
+
+        <div class="semester-title">7<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Dynamique des structures</span>
+          <span class="chip"><i data-feather="thermometer" class="w-4 h-4 mr-1"></i>Thermique</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Calcul numérique</span>
+          <span class="chip"><i data-feather="layers" class="w-4 h-4 mr-1"></i>Matériaux composites</span>
+          <span class="chip"><i data-feather="wind" class="w-4 h-4 mr-1"></i>Mécanique fluide numérique</span>
+          <span class="chip"><i data-feather="settings" class="w-4 h-4 mr-1"></i>Conception systèmes</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Choix moteurs électriques</span>
+          <span class="chip"><i data-feather="refresh-ccw" class="w-4 h-4 mr-1"></i>Analyse cycle de vie</span>
+          <span class="chip"><i data-feather="briefcase" class="w-4 h-4 mr-1"></i>Gestion d'entreprise</span>
+          <span class="chip"><i data-feather="trending-up" class="w-4 h-4 mr-1"></i>Marketing</span>
+        </div>
+
+        <div class="semester-title">6<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="tool" class="w-4 h-4 mr-1"></i>Analyse/conception guidages</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Productique</span>
+          <span class="chip"><i data-feather="zap" class="w-4 h-4 mr-1"></i>Transmission puissance</span>
+          <span class="chip"><i data-feather="eye" class="w-4 h-4 mr-1"></i>Cotation/métrologie</span>
+          <span class="chip"><i data-feather="globe" class="w-4 h-4 mr-1"></i>Environnement économique</span>
+          <span class="chip"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Mécanique des fluides</span>
+          <span class="chip"><i data-feather="repeat" class="w-4 h-4 mr-1"></i>Mécanique solide déformable</span>
+          <span class="chip"><i data-feather="clock" class="w-4 h-4 mr-1"></i>Vibrations</span>
+          <span class="chip"><i data-feather="code" class="w-4 h-4 mr-1"></i>Méthodes numériques</span>
+          <span class="chip"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Outils mathématiques</span>
+          <span class="chip project">
+            <i data-feather="users" class="w-4 h-4 mr-1"></i>
+            <a href="projects.html#projet-prothese" class="apple-link">Projet Prothèse</a>
+          </span>
+        </div>
+
+        <div class="semester-title">5<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Technologie</span>
+          <span class="chip"><i data-feather="box" class="w-4 h-4 mr-1"></i>Matériaux</span>
+          <span class="chip"><i data-feather="link-2" class="w-4 h-4 mr-1"></i>Analyse/conception liaisons</span>
+          <span class="chip"><i data-feather="shield" class="w-4 h-4 mr-1"></i>Résistance matériaux</span>
+          <span class="chip"><i data-feather="rotate-ccw" class="w-4 h-4 mr-1"></i>Mécanique solide indéformable</span>
+          <span class="chip"><i data-feather="code" class="w-4 h-4 mr-1"></i>Informatique</span>
+          <span class="chip"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Outils mathématiques</span>
+          <span class="chip project">
+            <i data-feather="users" class="w-4 h-4 mr-1"></i>
+            <a href="projects.html#projet-ctes" class="apple-link">Challenge Transition Écologique et Sociétale</a>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLYTECH ORLEANS -->
+    <section class="school-card fade-in">
+      <img src="img/logo polytech orleans.jpg" alt="Logo Polytech Orléans" class="school-logo" />
+      <div class="school-title">Polytechnique d'Orléans</div>
+      <div class="school-years">Septembre 2021 – Juillet 2023</div>
+      <div class="school-badge">Cycle préparatoire</div>
+      <div class="mb-4 text-sm">
+        <a href="docs/MAtieres_PEIP.pdf" class="apple-link" target="_blank">
+          Voir le programme pédagogique du cycle préparatoire aux écoles d'ingénieurs.
+        </a>
+      </div>
+      <hr class="divider" />
+      <div>
+        <div class="semester-title">4<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Physique ondulatoire</span>
+          <span class="chip"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Traitement du signal</span>
+          <span class="chip"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Dynamique Bernoulli &amp; Lagrange</span>
+          <span class="chip project">
+            <i data-feather="flag" class="w-4 h-4 mr-1"></i>
+            <a href="projects.html#projet-langue" class="apple-link">Projet de langue</a>
+          </span>
+          <span class="chip project">
+            <i data-feather="zap" class="w-4 h-4 mr-1"></i>
+            <a href="projects.html#projet-couteau" class="apple-link">Projet Couteau électrique</a>
+          </span>
+        </div>
+
+        <div class="semester-title">3<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="sun" class="w-4 h-4 mr-1"></i>Électromagnétisme &amp; optique</span>
+          <span class="chip"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Signaux &amp; systèmes linéaires</span>
+          <span class="chip"><i data-feather="thermometer" class="w-4 h-4 mr-1"></i>Thermodynamique</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Cinématique, Matériaux &amp; EDO</span>
+          <span class="chip"><i data-feather="code" class="w-4 h-4 mr-1"></i>Programmation avancée</span>
+        </div>
+
+        <div class="semester-title">2<sup>e</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Bases de l'électronique</span>
+          <span class="chip"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Maths Info</span>
+          <span class="chip"><i data-feather="target" class="w-4 h-4 mr-1"></i>Équilibres de Newton</span>
+          <span class="chip project">
+            <i data-feather="cpu" class="w-4 h-4 mr-1"></i>
+            <a href="projects.html#projet-robot" class="apple-link">Projet robot sur damier</a>
+          </span>
+        </div>
+
+        <div class="semester-title">1<sup>er</sup> semestre</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="toggle-left" class="w-4 h-4 mr-1"></i>Circuits électriques</span>
+          <span class="chip"><i data-feather="bar-chart" class="w-4 h-4 mr-1"></i>Maths info</span>
+          <span class="chip"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Chimie</span>
+          <span class="chip"><i data-feather="triangle" class="w-4 h-4 mr-1"></i>Géométrie de Pythagore &amp; Descartes</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FBS -->
+    <section class="school-card fade-in">
+      <img src="img/Logo FBS.png" alt="Logo FBS" class="school-logo" />
+      <div class="school-title">Francs-Bourgeois LaSalle</div>
+      <div class="school-years">Septembre 2019 – Juillet 2021</div>
+      <div class="school-badge">Lycée Général</div>
+      <hr class="divider" />
+      <div>
+        <div class="semester-title">Terminale</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Mathématiques — modélisation</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Sc. Ingénieur — automatismes</span>
+          <span class="chip project"><i data-feather="flag" class="w-4 h-4 mr-1"></i>Projet Trottinette électrique</span>
+        </div>
+        <div class="semester-title">Première</div>
+        <div class="chips-group">
+          <span class="chip"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Maths — géométrie &amp; suites</span>
+          <span class="chip"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Sc. Ingénieur — modélisation 3D</span>
+          <span class="chip"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Physique-chimie</span>
+          <span class="chip project"><i data-feather="flag" class="w-4 h-4 mr-1"></i>Projet Robot suiveur de ligne</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center mt-12">
+      <a href="#top" class="apple-link text-lg">Retour en haut</a>
     </div>
-    <hr class="divider"/>
-    <div>
-      <div class="semester-title fade-in">8<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="sliders" class="w-4 h-4 mr-1"></i>Modélisation et commande</span>
-        <span class="chip fade-in"><i data-feather="settings" class="w-4 h-4 mr-1"></i>Conception systèmes</span>
-        <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Machines hydrauliques</span>
-        <span class="chip fade-in"><i data-feather="users" class="w-4 h-4 mr-1"></i>Management</span>
-        <span class="chip fade-in"><i data-feather="users" class="w-4 h-4 mr-1"></i>Outils numériques</span>
-        <span class="chip fade-in"><i data-feather="users" class="w-4 h-4 mr-1"></i>Fatigue</span>
-        <span class="chip project fade-in"><i data-feather="target" class="w-4 h-4 mr-1"></i>
-          <a href="projects.html#projet-rugby" class="apple-link">Projet cible de rugby</a>
-        </span>
-      </div>
-      <div class="semester-title fade-in">7<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Dynamique des structures</span>
-        <span class="chip fade-in"><i data-feather="thermometer" class="w-4 h-4 mr-1"></i>Thermique</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Calcul numérique</span>
-        <span class="chip fade-in"><i data-feather="layers" class="w-4 h-4 mr-1"></i>Matériaux composites</span>
-        <span class="chip fade-in"><i data-feather="wind" class="w-4 h-4 mr-1"></i>Mécanique fluide numérique</span>
-        <span class="chip fade-in"><i data-feather="settings" class="w-4 h-4 mr-1"></i>Conception systèmes</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Choix moteurs électriques</span>
-        <span class="chip fade-in"><i data-feather="refresh-ccw" class="w-4 h-4 mr-1"></i>Analyse cycle de vie</span>
-        <span class="chip fade-in"><i data-feather="briefcase" class="w-4 h-4 mr-1"></i>Gestion d'entreprise</span>
-        <span class="chip fade-in"><i data-feather="trending-up" class="w-4 h-4 mr-1"></i>Marketing</span>
-      </div>
-      <div class="semester-title fade-in">6<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="tool" class="w-4 h-4 mr-1"></i>Analyse/conception guidages</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Productique</span>
-        <span class="chip fade-in"><i data-feather="zap" class="w-4 h-4 mr-1"></i>Transmission puissance</span>
-        <span class="chip fade-in"><i data-feather="eye" class="w-4 h-4 mr-1"></i>Cotation/métrologie</span>
-        <span class="chip fade-in"><i data-feather="globe" class="w-4 h-4 mr-1"></i>Environnement économique</span>
-        <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Mécanique des fluides</span>
-        <span class="chip fade-in"><i data-feather="repeat" class="w-4 h-4 mr-1"></i>Mécanique solide déformable</span>
-        <span class="chip fade-in"><i data-feather="clock" class="w-4 h-4 mr-1"></i>Vibrations</span>
-        <span class="chip fade-in"><i data-feather="code" class="w-4 h-4 mr-1"></i>Méthodes numériques</span>
-        <span class="chip fade-in"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Outils mathématiques</span>
-        <span class="chip project fade-in"><i data-feather="users" class="w-4 h-4 mr-1"></i>
-          <a href="projects.html#projet-prothese" class="apple-link">Projet Prothèse</a>
-        </span>
-      </div>
-      <div class="semester-title fade-in">5<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Technologie</span>
-        <span class="chip fade-in"><i data-feather="box" class="w-4 h-4 mr-1"></i>Matériaux</span>
-        <span class="chip fade-in"><i data-feather="link-2" class="w-4 h-4 mr-1"></i>Analyse/conception liaisons</span>
-        <span class="chip fade-in"><i data-feather="shield" class="w-4 h-4 mr-1"></i>Résistance matériaux</span>
-        <span class="chip fade-in"><i data-feather="rotate-ccw" class="w-4 h-4 mr-1"></i>Mécanique solide indéformable</span>
-        <span class="chip fade-in"><i data-feather="code" class="w-4 h-4 mr-1"></i>Informatique</span>
-        <span class="chip fade-in"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Outils mathématiques</span>
-        <span class="chip project fade-in"><i data-feather="users" class="w-4 h-4 mr-1"></i>
-          <a href="projects.html#projet-ctes" class="apple-link">Challenge Transition Écologique et Sociétale</a>
-        </span>
+  </main>
+
+  <section class="fade-in portfolio-nav-section">
+    <div class="container">
+      <h2 style="color: inherit; text-align:center;">Explorer le portfolio</h2>
+      <div class="portfolio-nav">
+        <a href="index.html">Accueil</a>
+        <a href="experiences.html">Expériences</a>
+        <a href="projects.html">Projets</a>
       </div>
     </div>
   </section>
-  
-  <!-- POLYTECH ORLEANS -->
-  <section class="school-card fade-in">
-    <img src="img/logo polytech orleans.jpg" alt="Logo Polytech Orléans" class="school-logo fade-in" />
-    <div class="school-title fade-in">Polytechnique d'Orléans</div>
-    <div class="school-years fade-in">Septembre 2021 – Juillet 2023</div>
-    <div class="school-badge fade-in">Cycle préparatoire</div>
-    <div class="fade-in mb-4 text-sm">
-      <a href="docs/MAtières PEIP.pdf" class="apple-link" target="_blank">
-        Voir le programme pédagogique du cycle préparatoire aux écoles d’ingénieurs.
-      </a>
-    </div>
-    <hr class="divider"/>
-    <div>
-      <div class="semester-title fade-in">4<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="wave-square" class="w-4 h-4 mr-1"></i>Physique ondulatoire</span>
-        <span class="chip fade-in"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Traitement du signal</span>
-        <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Dynamique Bernoulli & Lagrange</span>
-        <span class="chip project fade-in"><i data-feather="flag" class="w-4 h-4 mr-1"></i>
-          <a href="projects.html#projet-langue" class="apple-link">Projet de langue</a>
-        </span>
-        <span class="chip project fade-in"><i data-feather="zap" class="w-4 h-4 mr-1"></i>
-          <a href="projects.html#projet-couteau" class="apple-link">Projet Couteau électrique</a>
-        </span>
-      </div>
-      <div class="semester-title fade-in">3<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="sun" class="w-4 h-4 mr-1"></i>Électromagnétisme & optique</span>
-        <span class="chip fade-in"><i data-feather="activity" class="w-4 h-4 mr-1"></i>Signaux & systèmes linéaires</span>
-        <span class="chip fade-in"><i data-feather="thermometer" class="w-4 h-4 mr-1"></i>Thermodynamique</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Cinématique, Matériaux & EDO</span>
-        <span class="chip fade-in"><i data-feather="code" class="w-4 h-4 mr-1"></i>Programmation avancée</span>
-      </div>
-      <div class="semester-title fade-in">2<sup>e</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Bases de l'électronique</span>
-        <span class="chip fade-in"><i data-feather="bar-chart-2" class="w-4 h-4 mr-1"></i>Maths Info</span>
-        <span class="chip fade-in"><i data-feather="target" class="w-4 h-4 mr-1"></i>Équilibres de Newton</span>
-        <span class="chip project fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>
-          <a href="projects.html#projet-robot" class="apple-link">Projet robot sur damier</a>
-        </span>
-      </div>
-      <div class="semester-title fade-in">1<sup>er</sup> semestre</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="toggle-left" class="w-4 h-4 mr-1"></i>Circuits électriques</span>
-        <span class="chip fade-in"><i data-feather="bar-chart" class="w-4 h-4 mr-1"></i>Maths info</span>
-        <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Chimie</span>
-        <span class="chip fade-in"><i data-feather="triangle" class="w-4 h-4 mr-1"></i>Géométrie de Pythagore & Descartes</span>
-      </div>
-    </div>
-  </section>
-  
-  <!-- FBS -->
-  <section class="school-card fade-in">
-    <img src="img/Logo FBS.png" alt="Logo FBS" class="school-logo fade-in" />
-    <div class="school-title fade-in">Francs-Bourgeois LaSalle</div>
-    <div class="school-years fade-in">Septembre 2019 – Juillet 2021</div>
-    <div class="school-badge fade-in">Lycée Général</div>
-    <hr class="divider"/>
-    <div>
-      <div class="semester-title fade-in">Terminale</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Mathématiques — modélisation</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Sc. Ingénieur — automatismes</span>
-        <span class="chip project fade-in"><i data-feather="flag" class="w-4 h-4 mr-1"></i>Projet Trottinette électrique</span>
-      </div>
-      <div class="semester-title fade-in">Première</div>
-      <div class="chips-group">
-        <span class="chip fade-in"><i data-feather="hash" class="w-4 h-4 mr-1"></i>Maths — géométrie & suites</span>
-        <span class="chip fade-in"><i data-feather="cpu" class="w-4 h-4 mr-1"></i>Sc. Ingénieur — modélisation 3D</span>
-        <span class="chip fade-in"><i data-feather="droplet" class="w-4 h-4 mr-1"></i>Physique-chimie</span>
-        <span class="chip project fade-in"><i data-feather="flag" class="w-4 h-4 mr-1"></i>Projet Robot suiveur de ligne</span>
-      </div>
-    </div>
-  </section>
-  
-  <div class="text-center mt-12">
-    <a href="#top" class="apple-link text-lg">Retour en haut</a>
-  </div>
-</main>
 
-<section class="bg-gray-100 py-10 mt-16 border-t border-gray-200 fade-in">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-lg font-semibold text-center text-gray-800 mb-7">Explorer le portfolio</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-700 text-center">
-      <a href="index.html" class="group block bg-white hover:bg-gray-50 rounded-lg overflow-hidden transition fade-in">
-        <img src="img/maison.png" alt="Accueil" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
-        <div class="p-2">Accueil</div>
-      </a>
-      <a href="experiences.html" class="group block bg-white hover:bg-gray-50 rounded-lg overflow-hidden transition fade-in">
-        <img src="img/experience.png" alt="Expériences" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
-        <div class="p-2">Expériences</div>
-      </a>
-      <a href="projects.html" class="group block bg-white hover:bg-gray-50 rounded-lg overflow-hidden transition fade-in">
-        <img src="img/projet.png" alt="Projets" class="w-full h-24 object-contain group-hover:scale-105 transition-transform duration-300">
-        <div class="p-2">Projets</div>
-      </a>
-     </div>
-  </div>
-</section>
+  <div id="site-footer"></div>
 
-<footer class="bg-white border-t mt-24 py-8 text-center text-sm text-gray-500 font-light tracking-wide">
-  <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
-    <p>© 2025 Nathan Ochem</p>
-    <div class="flex space-x-8">
-      <a href="mailto:nathan.ochem@yahoo.com" class="text-blue-600 hover:text-blue-800 hover:underline transition">📧 Email</a>
-      <a href="https://www.linkedin.com/in/nathanochem" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">🔗 LinkedIn</a>
-      <a href="cv_nathan_ochem.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline transition">📄 CV</a>
-    </div>
-  </div>
-</footer>
-
-<!-- Feather Icons -->
-<script src="https://unpkg.com/feather-icons"></script>
-<script>
-  feather.replace();
-  // Menu burger
-  const burgerBtn = document.getElementById('burgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  burgerBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
+  <script src="common.js"></script>
+  <script>
+    document.addEventListener("layout:ready", () => {
+      if (window.feather) window.feather.replace();
     });
-  });
-
-  // Fade-in animé pour CHAQUE élément ayant .fade-in
-  document.addEventListener("DOMContentLoaded", () => {
-    const faders = document.querySelectorAll('.fade-in');
-    let delay = 0;
-    faders.forEach((el, idx) => {
-      setTimeout(() => {
-        el.classList.add('visible');
-      }, delay);
-      delay += 75;
-    });
-  });
-</script>
+  </script>
 </body>
 </html>

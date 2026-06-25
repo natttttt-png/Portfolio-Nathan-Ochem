@@ -1,0 +1,183 @@
+/* ============================================================
+   projects.css — styles propres à la page Projets uniquement
+   (sidebar de navigation interne + carrousels + galeries alternées)
+   Toutes les couleurs passent par les variables de apple-style.css
+   pour rester cohérentes en mode clair/sombre.
+   ============================================================ */
+
+#mainContent h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.6rem;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 640px) {
+  #mainContent h1 { font-size: 2rem; }
+}
+
+/* ---------- Carrousel horizontal (avec indice de scroll visible) ---------- */
+.carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem 0;
+  margin-bottom: 1.8rem;
+  scroll-snap-type: x mandatory;
+  /* Fade visuel sur le bord droit : indique qu'il y a du contenu à scroller */
+  mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+}
+.carousel-item {
+  flex: 0 0 auto;
+  width: 16rem;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carousel-item img {
+  width: 100%;
+  height: 11rem;
+  object-fit: contain;
+  background: var(--steel-soft);
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(var(--shadow-color), 0.08);
+}
+.carousel-caption {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--graphite);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+/* ---------- Galerie image+texte alternée (empilée) ---------- */
+.alt-stack { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 1.8rem; }
+.alt-row { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+.alt-row img {
+  width: 100%;
+  max-height: 14rem;
+  object-fit: contain;
+  background: var(--steel-soft);
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  box-shadow: 0 2px 10px rgba(var(--shadow-color), 0.08);
+}
+.alt-row p { font-family: var(--font-mono); font-size: 0.82rem; color: var(--graphite); max-width: 28rem; }
+
+@media (min-width: 768px) {
+  .alt-row { flex-direction: row; text-align: left; }
+  .alt-row--reverse { flex-direction: row-reverse; }
+  .alt-row img { width: 50%; height: 13rem; }
+  .alt-row p { width: 50%; }
+  .alt-row--reverse p { text-align: right; }
+}
+
+/* ---------- Vidéo projet ---------- */
+.project-video {
+  width: 100%;
+  max-width: 48rem;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(var(--shadow-color), 0.08);
+}
+
+/* ---------- Sidebar de navigation entre projets ---------- */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--shadow-color), 0.18);
+  z-index: 60;
+}
+#sidebar-overlay.active { display: block; }
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 290px;
+  max-width: 90vw;
+  background: var(--paper-raised);
+  box-shadow: 0 8px 32px 0 rgba(var(--shadow-color), 0.18);
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform .33s cubic-bezier(.41, 0, .2, 1);
+  z-index: 70;
+  padding: 2.1rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+#sidebar.open { transform: translateX(0); }
+#sidebar h3 { font-family: var(--font-display); color: var(--ink); font-size: 1.11rem; font-weight: 600; margin-bottom: 1.2rem; }
+#sidebar ul { margin: 0; padding: 0; }
+#sidebar li { list-style: none; margin-bottom: .5rem; }
+#sidebar a {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 0.54em 1.1em;
+  transition: background .15s, color .15s;
+  text-decoration: none;
+}
+#sidebar a:hover, #sidebar a.active {
+  background: var(--steel-soft);
+  color: var(--signal);
+}
+#sidebar .sidebar-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--graphite);
+  cursor: pointer;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#sidebar .sidebar-close svg { width: 20px; height: 20px; }
+#sidebar .sidebar-close:hover { color: var(--signal); }
+
+/* Bouton toggle de la sidebar : placé sous le header sticky, pas dessus,
+   pour éviter toute collision visuelle avec le burger menu du header. */
+#sidebarToggle {
+  position: fixed;
+  top: 5.5rem;
+  left: 1.1rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  font-size: 1rem;
+  border-radius: 13px;
+  padding: 0.43em 0.87em;
+  cursor: pointer;
+  z-index: 40;
+  font-weight: 500;
+  box-shadow: 0 1px 7px 0 rgba(var(--shadow-color), 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+#sidebarToggle svg { width: 1.1em; height: 1.1em; }
+#sidebarToggle:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+@media (max-width: 700px) {
+  #sidebar { width: 84vw; }
+  #sidebarToggle { top: 4.5rem; left: 0.6rem; padding: 0.32em 0.7em; }
+}
