@@ -147,7 +147,6 @@ section {
 @media (prefers-reduced-motion: reduce) {
   .fade-in { opacity: 1; transform: none; transition: none; }
 }
-
 .image-hover-zoom { transition: transform 0.4s ease; }
 .image-hover-zoom:hover { transform: scale(1.04); }
 
@@ -286,11 +285,27 @@ section {
   margin-right: auto;
   text-align: left;
   border: 1px solid var(--border);
-  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
+  position: relative;
+  overflow: hidden;
   transition: background 0.25s, border-color 0.25s;
 }
+/* Coin chanfreiné technique en pseudo-élément : pas de clip-path qui
+   couperait box-shadow et déclencherait des bugs de rendu */
+.apple-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--paper);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  border-bottom-left-radius: 4px;
+  transition: background 0.25s;
+}
 @media (max-width: 640px) {
-  .apple-card { padding: 1.5rem 1.1rem; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
+  .apple-card { padding: 1.5rem 1.1rem; }
+  .apple-card::before { width: 18px; height: 18px; }
 }
 
 /* ====================== EXPERIENCE LOGO ====================== */

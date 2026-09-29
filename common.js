@@ -97,7 +97,7 @@
             }
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+        { threshold: 0, rootMargin: "0px 0px -20px 0px" }
       );
       faders.forEach((el) => observer.observe(el));
     } else {
