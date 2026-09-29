@@ -173,11 +173,8 @@ section {
   width: 130px;
   height: 130px;
   object-fit: contain;
-  border-radius: 16px;
+  border-radius: 8px;
   margin: 0 auto 1.4rem auto;
-  background: var(--paper-raised);
-  padding: 0.6rem;
-  box-shadow: 0 1px 8px rgba(var(--shadow-color), 0.06);
 }
 
 .school-title {
@@ -313,10 +310,7 @@ section {
   height: 4rem;
   width: 4rem;
   object-fit: contain;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--paper-raised);
-  padding: 0.3rem;
+  border-radius: 8px;
 }
 
 /* ====================== NAV/FOOTER ====================== */
